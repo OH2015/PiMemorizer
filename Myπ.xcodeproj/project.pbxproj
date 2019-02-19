@@ -7,10 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D2E38182219279900D85B3D /* titleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E38172219279900D85B3D /* titleViewController.swift */; };
+		9D2E97542219226200510571 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D2E97532219226200510571 /* Images.xcassets */; };
+		9D88FEFA221A8882006CB0EF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D88FEF9221A8882006CB0EF /* SettingViewController.swift */; };
+		9DA8B1D322167FDB00FB4626 /* wonderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8B1D222167FDA00FB4626 /* wonderView.swift */; };
+		9DA8B1D5221682CC00FB4626 /* wonderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA8B1D4221682CC00FB4626 /* wonderLabel.swift */; };
+		9DCBD025221905FC00A92910 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCBD024221905FC00A92910 /* UILabel.swift */; };
+		9DEC1DCE2215BA60000E5AC8 /* WonderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC1DCD2215BA60000E5AC8 /* WonderViewController.swift */; };
+		9DEC1DD02215BB0D000E5AC8 /* wonderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DEC1DCF2215BB0D000E5AC8 /* wonderView.xib */; };
 		9DFFCA07220EC110004EA1DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFFCA06220EC110004EA1DA /* AppDelegate.swift */; };
 		9DFFCA09220EC110004EA1DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFFCA08220EC110004EA1DA /* ViewController.swift */; };
 		9DFFCA0C220EC110004EA1DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFFCA0A220EC110004EA1DA /* Main.storyboard */; };
-		9DFFCA0E220EC111004EA1DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFFCA0D220EC111004EA1DA /* Assets.xcassets */; };
 		9DFFCA11220EC112004EA1DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFFCA0F220EC112004EA1DA /* LaunchScreen.storyboard */; };
 		9DFFCA1C220EC112004EA1DA /* My_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFFCA1B220EC112004EA1DA /* My_Tests.swift */; };
 		9DFFCA27220EC112004EA1DA /* My_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFFCA26220EC112004EA1DA /* My_UITests.swift */; };
@@ -34,11 +41,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D2E38172219279900D85B3D /* titleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = titleViewController.swift; sourceTree = "<group>"; };
+		9D2E97532219226200510571 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9D88FEF9221A8882006CB0EF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		9DA8B1D222167FDA00FB4626 /* wonderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = wonderView.swift; path = "Myπ/wonderView.swift"; sourceTree = "<group>"; };
+		9DA8B1D4221682CC00FB4626 /* wonderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = wonderLabel.swift; path = "Myπ/wonderLabel.swift"; sourceTree = "<group>"; };
+		9DCBD024221905FC00A92910 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		9DEC1DCD2215BA60000E5AC8 /* WonderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WonderViewController.swift; sourceTree = "<group>"; };
+		9DEC1DCF2215BB0D000E5AC8 /* wonderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = wonderView.xib; sourceTree = "<group>"; };
 		9DFFCA03220EC110004EA1DA /* Myπ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Myπ.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFFCA06220EC110004EA1DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DFFCA08220EC110004EA1DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9DFFCA0B220EC110004EA1DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9DFFCA0D220EC111004EA1DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DFFCA10220EC112004EA1DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DFFCA12220EC112004EA1DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DFFCA17220EC112004EA1DA /* MyπTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MyπTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +91,10 @@
 		9DFFC9FA220EC110004EA1DA = {
 			isa = PBXGroup;
 			children = (
+				9D88FEF9221A8882006CB0EF /* SettingViewController.swift */,
+				9DEC1DCF2215BB0D000E5AC8 /* wonderView.xib */,
+				9DA8B1D222167FDA00FB4626 /* wonderView.swift */,
+				9DA8B1D4221682CC00FB4626 /* wonderLabel.swift */,
 				9DFFCA05220EC110004EA1DA /* Myπ */,
 				9DFFCA1A220EC112004EA1DA /* MyπTests */,
 				9DFFCA25220EC112004EA1DA /* MyπUITests */,
@@ -100,9 +118,12 @@
 				9DFFCA06220EC110004EA1DA /* AppDelegate.swift */,
 				9DFFCA08220EC110004EA1DA /* ViewController.swift */,
 				9DFFCA0A220EC110004EA1DA /* Main.storyboard */,
-				9DFFCA0D220EC111004EA1DA /* Assets.xcassets */,
+				9D2E38172219279900D85B3D /* titleViewController.swift */,
+				9DCBD024221905FC00A92910 /* UILabel.swift */,
+				9DEC1DCD2215BA60000E5AC8 /* WonderViewController.swift */,
 				9DFFCA0F220EC112004EA1DA /* LaunchScreen.storyboard */,
 				9DFFCA12220EC112004EA1DA /* Info.plist */,
+				9D2E97532219226200510571 /* Images.xcassets */,
 			);
 			path = "Myπ";
 			sourceTree = "<group>";
@@ -230,7 +251,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DFFCA11220EC112004EA1DA /* LaunchScreen.storyboard in Resources */,
-				9DFFCA0E220EC111004EA1DA /* Assets.xcassets in Resources */,
+				9D2E97542219226200510571 /* Images.xcassets in Resources */,
+				9DEC1DD02215BB0D000E5AC8 /* wonderView.xib in Resources */,
 				9DFFCA0C220EC110004EA1DA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,7 +278,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DEC1DCE2215BA60000E5AC8 /* WonderViewController.swift in Sources */,
+				9DA8B1D322167FDB00FB4626 /* wonderView.swift in Sources */,
 				9DFFCA09220EC110004EA1DA /* ViewController.swift in Sources */,
+				9D88FEFA221A8882006CB0EF /* SettingViewController.swift in Sources */,
+				9D2E38182219279900D85B3D /* titleViewController.swift in Sources */,
+				9DA8B1D5221682CC00FB4626 /* wonderLabel.swift in Sources */,
+				9DCBD025221905FC00A92910 /* UILabel.swift in Sources */,
 				9DFFCA07220EC110004EA1DA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +460,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T7886L96UG;
 				INFOPLIST_FILE = "Myπ/Info.plist";
@@ -450,6 +479,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T7886L96UG;
 				INFOPLIST_FILE = "Myπ/Info.plist";
