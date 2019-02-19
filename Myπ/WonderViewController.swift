@@ -17,7 +17,6 @@ class WonderViewController: UIViewController {
 
     @IBOutlet weak var button: UIButton!
 
-
     let img1 = UIImage(named: "Image-1")
     let img2 = UIImage(named: "Image-2")
     let img3 = UIImage(named: "Image-3")
@@ -30,13 +29,17 @@ class WonderViewController: UIViewController {
 
     var timer:Timer?
     let spaceRemovedPie = pie.replacingOccurrences(of: " ", with: "")
+    let userDefaults = UserDefaults.standard
 
     var count = 0
 
-    var PieArray = ["3."]
 
+    var colors = [color1,color2,color3,color4,color5,color6,color7,color8,color9,color10]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        colorSet = userDefaults.dictionary(forKey: "KEY_colorSet") as! [String : Int]
+        PieArray.append("3")
 
         for i in spaceRemovedPie{
             PieArray.append(String(i))
@@ -72,7 +75,7 @@ class WonderViewController: UIViewController {
         myView.tag = count
 
         myLab.text = String(PieArray[count])
-        myLab.textColor = UIColor.red
+        myLab.textColor = colors[colorSet[PieArray[count]]!]
         myLab.minimumScaleFactor = 0.3
         myLab.font = UIFont.boldSystemFont(ofSize: 40)
         myLab.frame = CGRect(x: 0, y: 0, width: 100, height: 100)

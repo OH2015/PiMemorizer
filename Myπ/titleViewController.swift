@@ -9,14 +9,18 @@
 import UIKit
 
 class titleViewController: UIInputViewController {
-
-
     @IBOutlet weak var imageView: UIImageView!
 
     var currentScale:CGFloat = 1.0
+    var colorSet = [String:Int]()
+    let userDefaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        for i in 0...9{
+            colorSet[String(i)] = i
+        }
+        userDefaults.register(defaults: ["KEY_colorSet":colorSet])
 
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchAction(sender:)))
         imageView.addGestureRecognizer(pinchGesture)
