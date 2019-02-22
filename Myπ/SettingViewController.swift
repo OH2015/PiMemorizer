@@ -12,6 +12,7 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
     @IBOutlet weak var skipCountLabel: UILabel!
     @IBOutlet weak var skipCountStepper: UIStepper!
     @IBOutlet weak var colorSwitch: UISwitch!
+    @IBOutlet weak var defaultButton: UIButton!
 
     @IBOutlet weak var colorCollectionView: UICollectionView!
     @IBOutlet weak var numberCollectionView: UICollectionView!
@@ -19,6 +20,7 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
     var colors = [color1,color2,color3,color4,color5,color6,color7,color8,color9,color10]
 
     let checkingColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+    let backGroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     var selectingNumber:Int?
     var selectingColor:Int?
     let userDefaults = UserDefaults.standard
@@ -62,7 +64,7 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
             if indexPath.row == selectingNumber{
                 cell.backgroundColor = checkingColor
             }else{
-                cell.backgroundColor = .white
+                cell.backgroundColor = backGroundColor
             }
             let label = cell.viewWithTag(1) as! UILabel
             label.text = String(indexPath.row)
@@ -99,9 +101,11 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
             guard let selectingNumber = selectingNumber else{return}
             colorSet[String(selectingNumber)] = indexPath.row
             userDefaults.set(colorSet, forKey: "KEY_colorSet")
+            defaultButton.setTitleColor(checkingColor, for: .normal)
         }
         numberCollectionView.reloadData()
         colorCollectionView.reloadData()
+
     }
 
 
@@ -121,6 +125,15 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
             colorUse = false
         }
         userDefaults.set(colorUse, forKey: "KEY_colorUse")
+    }
+
+    @IBAction func Default(_ sender: UIButton) {
+        userDefaults.removeObject(forKey: "KEY_colorSet")
+        colorSet = userDefaults.dictionary(forKey: "KEY_colorSet") as! [String : Int]
+        numberCollectionView.reloadData()
+        colorCollectionView.reloadData()
+        sender.setTitleColor(.black, for: .normal)
+
     }
 
 
