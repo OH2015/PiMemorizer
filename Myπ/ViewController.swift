@@ -65,28 +65,27 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        print(passNumbers.count/100 + 1)
         return passNumbers.count/100 + 1
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         let label = cell.contentView.viewWithTag(1) as! UILabel
-        print(indexPath.section)
+
         var PNs = [String]()
         if passNumbers.count - indexPath.section*100 > 100{
             PNs += passNumbers[indexPath.section*100...indexPath.section*100 + 99]
-
-            label.text = PNs[indexPath.row]
-
         }else{
             PNs += passNumbers[indexPath.section*100...passNumbers.count - 1]
-            label.text = PNs[indexPath.row]
         }
+        label.text = PNs[indexPath.row]
 
         if colorUse{
             if let colorSet = colorSet[passNumbers[indexPath.row]]{
                 label.textColor = colors[colorSet]
+            }
+            if indexPath.section == 0 && indexPath.row == 0{
+                label.textColor = colors[colorSet["3"]!]
             }
         }
 
@@ -95,12 +94,13 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let CVscrwidth = self.collectionView.frame.width
-        return CGSize(width: CVscrwidth/10, height: CVscrwidth/9)
+        return CGSize(width: CVscrwidth/9, height: CVscrwidth/9)
     }
 
     func setContentOffset(){
         let CVscrwidth = self.collectionView.frame.width
-        let offset = CGPoint(x: 0, y: CVscrwidth/9 * CGFloat(passNumbers.count/10 - 5))
+        //        y:一行の高さ✖️行の数
+        let offset = CGPoint(x: 0, y: CVscrwidth/9 * CGFloat(passNumbers.count/8 - 5))
         collectionView.setContentOffset(offset, animated: true)
     }
     
