@@ -23,4 +23,8 @@ let color9 = #colorLiteral(red: 0.7551546749, green: 0.1739720619, blue: 0.99942
 let color10 = #colorLiteral(red: 0.9994240403, green: 0.04911660341, blue: 0.1450915709, alpha: 1)
 var colorSet = [String:Int]()
 var colorUse = true
+var skipcount = 0
+let redLife = UIImage(named: "redLife")
+let greenLife = UIImage(named: "greenLife")
+let blueLife = UIImage(named: "blueLife")
 

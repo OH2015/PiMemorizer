@@ -16,7 +16,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     var colors = [color1,color2,color3,color4,color5,color6,color7,color8,color9,color10]
     let userDefaults = UserDefaults.standard
 
-    var skipcount = 0
+    
     var GameStatus = false
     var count = 0
     var passNumbers = [String]()
@@ -41,13 +41,14 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         super.viewDidLoad()
         colorSet = userDefaults.dictionary(forKey: "KEY_colorSet") as! [String : Int]
         colorUse = userDefaults.bool(forKey: "KEY_colorUse")
+        skipcount = userDefaults.integer(forKey: "KEY_skipcount")
 
         for i in spaceRemovedPie{
             PieArray.append(String(i))
         }
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        skipcount = UserDefaults.standard.integer(forKey: "KEY_skipcount")
+
         setNumber()
         sideLabel.text = "\(passNumbers.count)桁目です"
     }
@@ -133,6 +134,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
 
     func setNumber(){
+        passNumbers.removeAll()
         passNumbers.append("3.")
         if skipcount != 0{
             for i in 0 ... skipcount-1{

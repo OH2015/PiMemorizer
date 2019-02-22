@@ -32,7 +32,7 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
 
         skipCountLabel.text = String(userDefaults.integer(forKey: "KEY_skipcount"))
         skipCountStepper.value = userDefaults.double(forKey: "KEY_skipcount")
-        VC.skipcount = userDefaults.integer(forKey: "KEY_skipcount")
+        skipcount = userDefaults.integer(forKey: "KEY_skipcount")
 
         if colorUse{
             colorSwitch.isOn = true
@@ -109,7 +109,7 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
     @IBAction func stepper(_ sender: UIStepper) {
         skipCountLabel.text = String(Int(sender.value))
         userDefaults.set(sender.value, forKey: "KEY_skipcount")
-        VC.skipcount = userDefaults.integer(forKey: "KEY_skipcount")
+        skipcount = userDefaults.integer(forKey: "KEY_skipcount")
 
     }
 
