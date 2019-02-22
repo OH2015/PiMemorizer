@@ -482,7 +482,7 @@
                                     </stepper>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bLG-cM-f37">
                                         <rect key="frame" x="8" y="172" width="315" height="153"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="0.71591659330000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="153" id="wPJ-52-c1C"/>
                                         </constraints>
@@ -553,10 +553,20 @@
                                             <action selector="ColorButton:" destination="Mgc-BR-Auw" eventType="valueChanged" id="lCD-sW-f6J"/>
                                         </connections>
                                     </switch>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9l-y5-CPj">
+                                        <rect key="frame" x="220" y="130.5" width="50" height="30"/>
+                                        <state key="normal" title="Default">
+                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Default:" destination="Mgc-BR-Auw" eventType="touchUpInside" id="v7c-Ad-Sb6"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="BEX-Ub-Db5" firstAttribute="top" secondItem="bLG-cM-f37" secondAttribute="bottom" constant="8" id="6JU-xU-WjY"/>
+                                    <constraint firstItem="K9l-y5-CPj" firstAttribute="leading" secondItem="Qvi-tw-KxW" secondAttribute="trailing" constant="30" id="6Tb-yl-u4f"/>
                                     <constraint firstAttribute="trailing" secondItem="BEX-Ub-Db5" secondAttribute="trailing" constant="8" id="9wX-KC-sqn"/>
                                     <constraint firstItem="v0s-2L-XiX" firstAttribute="centerY" secondItem="8Zy-pm-oaD" secondAttribute="centerY" id="C1j-lg-js4"/>
                                     <constraint firstItem="EiT-Md-QkR" firstAttribute="top" secondItem="p4h-Cq-Guy" secondAttribute="top" constant="56" id="E3F-Ca-fr5"/>
@@ -568,6 +578,7 @@
                                     <constraint firstItem="bLG-cM-f37" firstAttribute="top" secondItem="8Zy-pm-oaD" secondAttribute="bottom" constant="74.5" id="aDn-wU-eG6"/>
                                     <constraint firstAttribute="trailing" secondItem="bLG-cM-f37" secondAttribute="trailing" constant="8" id="dxq-AJ-YKW"/>
                                     <constraint firstItem="Qvi-tw-KxW" firstAttribute="top" secondItem="v0s-2L-XiX" secondAttribute="bottom" constant="33.5" id="hrJ-Jd-wOj"/>
+                                    <constraint firstItem="K9l-y5-CPj" firstAttribute="centerY" secondItem="Qvi-tw-KxW" secondAttribute="centerY" id="jo7-I3-0ou"/>
                                     <constraint firstItem="BEX-Ub-Db5" firstAttribute="leading" secondItem="p4h-Cq-Guy" secondAttribute="leading" constant="8" id="kAm-YF-DLv"/>
                                     <constraint firstAttribute="bottom" secondItem="BEX-Ub-Db5" secondAttribute="bottom" id="pGH-gJ-Og4"/>
                                     <constraint firstItem="8Zy-pm-oaD" firstAttribute="leading" secondItem="p4h-Cq-Guy" secondAttribute="leading" constant="8" id="qjW-H3-L2l"/>
@@ -911,6 +922,9 @@
                         <outlet property="button8" destination="Uw1-xf-DcS" id="JYc-Zv-zcT"/>
                         <outlet property="button9" destination="nhg-In-73R" id="bRb-s2-aNj"/>
                         <outlet property="collectionView" destination="zQO-en-nyb" id="XXm-Hg-4Py"/>
+                        <outlet property="life1" destination="IJx-ph-P8t" id="fyQ-zS-5b0"/>
+                        <outlet property="life2" destination="IPo-Wl-ZfM" id="JDT-FQ-zre"/>
+                        <outlet property="life3" destination="Csl-Om-yRs" id="yq9-aj-bFw"/>
                         <outlet property="sideLabel" destination="DPU-MA-kLS" id="GcK-2o-qC0"/>
                         <outlet property="timeLabel" destination="aaB-dw-Jfq" id="Upu-Yz-hOl"/>
                     </connections>

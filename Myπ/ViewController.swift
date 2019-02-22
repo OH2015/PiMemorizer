@@ -19,6 +19,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     var GameStatus = false
     var count = 0
+    var life = 3
     var passNumbers = [String]()
 
     let spaceRemovedPie = pie.replacingOccurrences(of: " ", with: "")
@@ -39,6 +40,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        life = 0
         colorSet = userDefaults.dictionary(forKey: "KEY_colorSet") as! [String : Int]
         colorUse = userDefaults.bool(forKey: "KEY_colorUse")
         skipcount = userDefaults.integer(forKey: "KEY_skipcount")
@@ -101,7 +103,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     func setContentOffset(){
         let CVscrwidth = self.collectionView.frame.width
         //        y:一行の高さ✖️行の数
-        let offset = CGPoint(x: 0, y: CVscrwidth/9 * CGFloat(passNumbers.count/8 - 5))
+        let offset = CGPoint(x: 0, y: CVscrwidth/9 * CGFloat(passNumbers.count/8 - 5)+CGFloat(passNumbers.count/100 * 30))
         collectionView.setContentOffset(offset, animated: true)
     }
     
@@ -114,11 +116,14 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 self.collectionView.reloadData()
                 sideLabel.text = "\(passNumbers.count)桁目です"
             }else{
-                GameStatus = false
-                count = 0
-                sideLabel.text = "\(passNumbers.count)桁で終了"
-                passNumbers.removeAll()
-                setNumber()
+                life -= 1
+                if life <= 0{
+                    GameStatus = false
+                    count = 0
+                    sideLabel.text = "\(passNumbers.count)桁で終了"
+                    passNumbers.removeAll()
+                    setNumber()
+                }
             }
         }else if sender.tag == Int(PieArray[skipcount]){
             GameStatus = true
@@ -229,6 +234,8 @@ class UIButtonAnimated: UIButton {
                        completion: nil
         )
     }
+
+    
 
 
 }

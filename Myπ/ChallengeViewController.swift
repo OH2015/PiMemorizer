@@ -11,6 +11,9 @@ import UIKit
 class ChallengeViewController: ViewController {
 
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var life1: UIImageView!
+    @IBOutlet weak var life2: UIImageView!
+    @IBOutlet weak var life3: UIImageView!
 
     var timer:Timer?
 
@@ -24,6 +27,7 @@ class ChallengeViewController: ViewController {
         skipcount = 0
         setNumber()
         GameStatus = true
+        life = 3
         sideLabel.text = "\(passNumbers.count)桁目です"
 
 
@@ -38,6 +42,7 @@ class ChallengeViewController: ViewController {
         let formatSec = String(format: "%02d", sec)
         let formatMin = String(format: "%02d", min)
         timeLabel.text = "\(formatMin):\(formatSec)"
+        drawLife()
 
         if timeCount == 0{
             timer!.invalidate()
@@ -54,6 +59,20 @@ class ChallengeViewController: ViewController {
         if GameStatus{}else{
             timer?.invalidate()
             sideLabel.text = "失敗です"
+        }
+    }
+
+    func drawLife(){
+        switch life {
+        case 1:life2.isHidden = true
+        case 2:life3.isHidden = true
+        case 3:life1.isHidden = false
+        life2.isHidden = false
+        life3.isHidden = false
+        default:
+            life1.isHidden = true
+            life2.isHidden = true
+            life3.isHidden = true
         }
     }
 
