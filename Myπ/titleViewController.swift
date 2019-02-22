@@ -20,7 +20,7 @@ class titleViewController: UIInputViewController {
         for i in 0...9{
             colorSet[String(i)] = i
         }
-        userDefaults.register(defaults: ["KEY_colorSet":colorSet])
+        userDefaults.register(defaults: ["KEY_colorSet":colorSet,"KEY_colorUse":colorUse])
 
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchAction(sender:)))
         imageView.addGestureRecognizer(pinchGesture)

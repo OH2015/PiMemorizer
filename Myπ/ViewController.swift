@@ -40,6 +40,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
         colorSet = userDefaults.dictionary(forKey: "KEY_colorSet") as! [String : Int]
+        colorUse = userDefaults.bool(forKey: "KEY_colorUse")
 
         for i in spaceRemovedPie{
             PieArray.append(String(i))
@@ -56,16 +57,39 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return passNumbers.count
+        if passNumbers.count - section*100 > 100{
+            return 100
+        }
+        return passNumbers.count - section*100
+
+    }
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        print(passNumbers.count/100 + 1)
+        return passNumbers.count/100 + 1
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         let label = cell.contentView.viewWithTag(1) as! UILabel
-        label.text = passNumbers[indexPath.row]
-        if let colorSet = colorSet[passNumbers[indexPath.row]]{
-            label.textColor = colors[colorSet]
+        print(indexPath.section)
+        var PNs = [String]()
+        if passNumbers.count - indexPath.section*100 > 100{
+            PNs += passNumbers[indexPath.section*100...indexPath.section*100 + 99]
+
+            label.text = PNs[indexPath.row]
+
+        }else{
+            PNs += passNumbers[indexPath.section*100...passNumbers.count - 1]
+            label.text = PNs[indexPath.row]
         }
+
+        if colorUse{
+            if let colorSet = colorSet[passNumbers[indexPath.row]]{
+                label.textColor = colors[colorSet]
+            }
+        }
+
         return cell
     }
 

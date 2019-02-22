@@ -22,4 +22,4 @@ let color8 = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.97647
 let color9 = #colorLiteral(red: 0.9994240403, green: 0.1946822109, blue: 0.980411319, alpha: 1)
 let color10 = #colorLiteral(red: 0.9994240403, green: 0.04911660341, blue: 0.1450915709, alpha: 1)
 var colorSet = [String:Int]()
-
+var colorUse = true

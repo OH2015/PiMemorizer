@@ -39,7 +39,7 @@ class WonderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         colorSet = userDefaults.dictionary(forKey: "KEY_colorSet") as! [String : Int]
-        PieArray.append("3")
+        PieArray.append("3.")
 
         for i in spaceRemovedPie{
             PieArray.append(String(i))
@@ -75,7 +75,10 @@ class WonderViewController: UIViewController {
         myView.tag = count
 
         myLab.text = String(PieArray[count])
-        myLab.textColor = colors[colorSet[PieArray[count]]!]
+        if colorUse{
+            myLab.textColor = colors[colorSet[PieArray[count]]!]
+        }
+
         myLab.minimumScaleFactor = 0.3
         myLab.font = UIFont.boldSystemFont(ofSize: 40)
         myLab.frame = CGRect(x: 0, y: 0, width: 100, height: 100)

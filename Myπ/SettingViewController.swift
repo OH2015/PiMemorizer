@@ -11,6 +11,7 @@ import UIKit
 class SettingViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var skipCountLabel: UILabel!
     @IBOutlet weak var skipCountStepper: UIStepper!
+    @IBOutlet weak var colorSwitch: UISwitch!
 
     @IBOutlet weak var colorCollectionView: UICollectionView!
     @IBOutlet weak var numberCollectionView: UICollectionView!
@@ -25,12 +26,19 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        colorUse = userDefaults.bool(forKey: "KEY_colorUse")
 
         colorSet = self.userDefaults.dictionary(forKey: "KEY_colorSet") as! [String : Int]
 
         skipCountLabel.text = String(userDefaults.integer(forKey: "KEY_skipcount"))
         skipCountStepper.value = userDefaults.double(forKey: "KEY_skipcount")
         VC.skipcount = userDefaults.integer(forKey: "KEY_skipcount")
+
+        if colorUse{
+            colorSwitch.isOn = true
+        }else{
+            colorSwitch.isOn = false
+        }
 
         self.numberCollectionView.delegate = self
         self.numberCollectionView.dataSource = self
@@ -106,12 +114,28 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
     }
 
 
+    @IBAction func ColorButton(_ sender: UISwitch) {
+        if sender.isOn{
+            colorUse = true
+        }else{
+            colorUse = false
+        }
+        userDefaults.set(colorUse, forKey: "KEY_colorUse")
+    }
+
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         for touch:UITouch in touches{
             let tag = touch.view!.tag
             if tag == 1{
                 dismiss(animated: true, completion: nil)
+            }
+            if tag == 2{
+                selectingNumber = 10
+                selectingColor = 10
+                numberCollectionView.reloadData()
+                colorCollectionView.reloadData()
             }
         }
     }
