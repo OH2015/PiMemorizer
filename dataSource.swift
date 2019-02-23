@@ -28,3 +28,6 @@ let redLife = UIImage(named: "redLife")
 let greenLife = UIImage(named: "greenLife")
 let blueLife = UIImage(named: "blueLife")
 
+var cellHeight:CGFloat = 0
+var cellWidth:CGFloat = 0
+

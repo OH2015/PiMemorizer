@@ -40,7 +40,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        life = 0
+        life = 10000
         colorSet = userDefaults.dictionary(forKey: "KEY_colorSet") as! [String : Int]
         colorUse = userDefaults.bool(forKey: "KEY_colorUse")
         skipcount = userDefaults.integer(forKey: "KEY_skipcount")
@@ -48,11 +48,14 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         for i in spaceRemovedPie{
             PieArray.append(String(i))
         }
+        let CVscrwidth = self.collectionView.frame.width
+        cellWidth = CVscrwidth/9
+        cellHeight = CVscrwidth/9
+
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
 
         setNumber()
-        sideLabel.text = "\(passNumbers.count)桁目です"
     }
 
     override func viewDidLayoutSubviews() {
@@ -75,16 +78,16 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         let label = cell.contentView.viewWithTag(1) as! UILabel
 
-        var PNs = [String]()
+        var numbersInSection = [String]()
         if passNumbers.count - indexPath.section*100 > 100{
-            PNs += passNumbers[indexPath.section*100...indexPath.section*100 + 99]
+            numbersInSection += passNumbers[indexPath.section*100...indexPath.section*100 + 99]
         }else{
-            PNs += passNumbers[indexPath.section*100...passNumbers.count - 1]
+            numbersInSection += passNumbers[indexPath.section*100...passNumbers.count - 1]
         }
-        label.text = PNs[indexPath.row]
+        label.text = numbersInSection[indexPath.row]
 
         if colorUse{
-            if let colorSet = colorSet[passNumbers[indexPath.row]]{
+            if let colorSet = colorSet[numbersInSection[indexPath.row]]{
                 label.textColor = colors[colorSet]
             }
             if indexPath.section == 0 && indexPath.row == 0{
@@ -96,14 +99,14 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let CVscrwidth = self.collectionView.frame.width
-        return CGSize(width: CVscrwidth/9, height: CVscrwidth/9)
+
+        return CGSize(width: cellWidth, height: cellHeight)
     }
 
     func setContentOffset(){
-        let CVscrwidth = self.collectionView.frame.width
-        //        y:一行の高さ✖️行の数
-        let offset = CGPoint(x: 0, y: CVscrwidth/9 * CGFloat(passNumbers.count/8 - 5)+CGFloat(passNumbers.count/100 * 30))
+        //        y:一行の高さ✖️行の数 + セクションの余白
+        let section = passNumbers.count/100
+        let offset = CGPoint(x: 0, y: cellHeight * CGFloat((passNumbers.count + section*4)/8 +  -5)+CGFloat(section * 30))
         collectionView.setContentOffset(offset, animated: true)
     }
     
@@ -146,6 +149,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 passNumbers.append(PieArray[i])
             }
         }
+        sideLabel.text = "\(passNumbers.count)桁目です"
     }
 
 //    func colorToImage(color:UIColor)->UIImage{
