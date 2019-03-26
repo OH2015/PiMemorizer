@@ -187,6 +187,7 @@ class UIButtonAnimated: UIButton {
         self.layer.borderWidth = 2
         self.layer.cornerRadius = 10
         self.clipsToBounds = true
+    
 
         // ボタンを押している時にボタンの色を暗くするためのView
         selectView = UIView(frame: self.bounds)
