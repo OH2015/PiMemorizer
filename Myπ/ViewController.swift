@@ -48,9 +48,9 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         for i in spaceRemovedPie{
             PieArray.append(String(i))
         }
-        let CVscrwidth = self.collectionView.frame.width
-        cellWidth = CVscrwidth/9
-        cellHeight = CVscrwidth/9
+        let scrwidth = self.view.frame.width
+        cellWidth = scrwidth/8
+        cellHeight = scrwidth/8
 
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -103,11 +103,18 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         return CGSize(width: cellWidth, height: cellHeight)
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets(top: 0 , left: 0 , bottom: 0 , right: 0)
+//    }
+
     func setContentOffset(){
         //        y:一行の高さ✖️行の数 + セクションの余白
         let section = passNumbers.count/100
-        let offset = CGPoint(x: 0, y: cellHeight * CGFloat((passNumbers.count + section*4)/8 +  -5)+CGFloat(section * 30))
-        collectionView.setContentOffset(offset, animated: true)
+        let offset = CGPoint(x: 0, y: cellHeight * CGFloat((passNumbers.count + section*4)/8 - 1)+CGFloat(section * 30))
+        collectionView.setContentOffset(offset, animated: false)
     }
     
 
@@ -135,9 +142,8 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             count += 1
         }
         self.collectionView.reloadData()
-        DispatchQueue.main.async {
-            self.setContentOffset()
-        }
+        self.setContentOffset()
+
 
     }
 

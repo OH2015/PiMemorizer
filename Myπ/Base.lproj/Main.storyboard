@@ -235,7 +235,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uDg-uY-2en">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uDg-uY-2en">
                                 <rect key="frame" x="0.0" y="128" width="414" height="358.5"/>
                                 <color key="backgroundColor" red="0.51533771348363566" green="0.62001771200076516" blue="0.8072057423857868" alpha="0.93580372431506842" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="9a4-Cq-Bdg">
@@ -260,6 +260,7 @@
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" red="1" green="0.23652897880000001" blue="0.19558717510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="j0n-tA-lls" firstAttribute="top" secondItem="l6c-PE-iTw" secondAttribute="top" id="K7I-oa-eIl"/>
                                             <constraint firstAttribute="trailing" secondItem="j0n-tA-lls" secondAttribute="trailing" id="PQl-hC-4ku"/>

@@ -13,6 +13,7 @@
 		9D838543221BE48800D9D472 /* dataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D838542221BE48800D9D472 /* dataSource.swift */; };
 		9D88FEFA221A8882006CB0EF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D88FEF9221A8882006CB0EF /* SettingViewController.swift */; };
 		9DCBD025221905FC00A92910 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCBD024221905FC00A92910 /* UILabel.swift */; };
+		9DD5C59F224A15A6007EA04C /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD5C59E224A15A6007EA04C /* extension.swift */; };
 		9DEDBEDB221FE15F00EF3F16 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDBEDA221FE15F00EF3F16 /* ChallengeViewController.swift */; };
 		9DFFCA07220EC110004EA1DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFFCA06220EC110004EA1DA /* AppDelegate.swift */; };
 		9DFFCA09220EC110004EA1DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFFCA08220EC110004EA1DA /* ViewController.swift */; };
@@ -46,6 +47,7 @@
 		9D838542221BE48800D9D472 /* dataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataSource.swift; sourceTree = "<group>"; };
 		9D88FEF9221A8882006CB0EF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		9DCBD024221905FC00A92910 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		9DD5C59E224A15A6007EA04C /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		9DEDBEDA221FE15F00EF3F16 /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		9DFFCA03220EC110004EA1DA /* Myπ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Myπ.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFFCA06220EC110004EA1DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				9D2E38172219279900D85B3D /* titleViewController.swift */,
 				9DEDBEDA221FE15F00EF3F16 /* ChallengeViewController.swift */,
 				9DFFCA08220EC110004EA1DA /* ViewController.swift */,
+				9DD5C59E224A15A6007EA04C /* extension.swift */,
 				9D88FEF9221A8882006CB0EF /* SettingViewController.swift */,
 				9D838540221BBF8700D9D472 /* MyUINavigationViewController.swift */,
 				9DFFCA0A220EC110004EA1DA /* Main.storyboard */,
@@ -277,6 +280,7 @@
 				9DEDBEDB221FE15F00EF3F16 /* ChallengeViewController.swift in Sources */,
 				9DFFCA09220EC110004EA1DA /* ViewController.swift in Sources */,
 				9D838541221BBF8700D9D472 /* MyUINavigationViewController.swift in Sources */,
+				9DD5C59F224A15A6007EA04C /* extension.swift in Sources */,
 				9D838543221BE48800D9D472 /* dataSource.swift in Sources */,
 				9D88FEFA221A8882006CB0EF /* SettingViewController.swift in Sources */,
 				9D2E38182219279900D85B3D /* titleViewController.swift in Sources */,
