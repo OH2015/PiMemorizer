@@ -11,6 +11,7 @@
 		7E69FBE10BEFDEA86537BBD1 /* Pods_My_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E51B81D124110D2987D46C6 /* Pods_My_UITests.framework */; };
 		9D2E38182219279900D85B3D /* titleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E38172219279900D85B3D /* titleViewController.swift */; };
 		9D3223E5224CCB870053E75D /* UIButtonAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3223E4224CCB870053E75D /* UIButtonAnimated.swift */; };
+		9D4D7BA0224CEAF300EAFEA3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D7B9F224CEAF300EAFEA3 /* TableViewController.swift */; };
 		9D5EC63A224BA78700B0A00D /* Pods_Myπ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D5EC639224BA78700B0A00D /* Pods_Myπ.framework */; };
 		9D83853F221BBD9F00D9D472 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D83853E221BBD9F00D9D472 /* Images.xcassets */; };
 		9D838541221BBF8700D9D472 /* MyUINavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D838540221BBF8700D9D472 /* MyUINavigationViewController.swift */; };
@@ -54,6 +55,7 @@
 		94B9DD45BD24C96FF23611B5 /* Pods-Myπ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Myπ.release.xcconfig"; path = "Target Support Files/Pods-Myπ/Pods-Myπ.release.xcconfig"; sourceTree = "<group>"; };
 		9D2E38172219279900D85B3D /* titleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = titleViewController.swift; sourceTree = "<group>"; };
 		9D3223E4224CCB870053E75D /* UIButtonAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAnimated.swift; sourceTree = "<group>"; };
+		9D4D7B9F224CEAF300EAFEA3 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		9D5EC637224BA5D900B0A00D /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5EC639224BA78700B0A00D /* Pods_Myπ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "Pods_Myπ.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D83853E221BBD9F00D9D472 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 		9D5178CB224CDE4700E0089F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9D4D7B9F224CEAF300EAFEA3 /* TableViewController.swift */,
 				9D2E38172219279900D85B3D /* titleViewController.swift */,
 				9DEDBEDA221FE15F00EF3F16 /* ChallengeViewController.swift */,
 				9DFFCA08220EC110004EA1DA /* ViewController.swift */,
@@ -441,6 +444,7 @@
 				9DEDBEDB221FE15F00EF3F16 /* ChallengeViewController.swift in Sources */,
 				9DFFCA09220EC110004EA1DA /* ViewController.swift in Sources */,
 				9D838541221BBF8700D9D472 /* MyUINavigationViewController.swift in Sources */,
+				9D4D7BA0224CEAF300EAFEA3 /* TableViewController.swift in Sources */,
 				9D838543221BE48800D9D472 /* dataSource.swift in Sources */,
 				9D88FEFA221A8882006CB0EF /* SettingViewController.swift in Sources */,
 				9D2E38182219279900D85B3D /* titleViewController.swift in Sources */,
