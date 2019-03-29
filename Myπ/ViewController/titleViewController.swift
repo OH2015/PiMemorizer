@@ -40,7 +40,12 @@ class titleViewController: UIViewController{
 
     func renewHighScore(){
         let highScore = uds.integer(forKey: KEY.highScore.rawValue)
-        highScoreLabel.text = "\(highScore)digit"
+        if highScore == 1000{
+            highScoreLabel.text = "Completed"
+        }else{
+            highScoreLabel.text = "\(highScore)digit"
+        }
+
     }
 
 }

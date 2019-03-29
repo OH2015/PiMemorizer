@@ -17,6 +17,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
     var GameStatus = false
     var count = 0
     var life = 3
+    var nomiss = 0
     var passNumbers = [String]()
     var offset:CGPoint!
 
@@ -132,11 +133,16 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
         if GameStatus{
             if String(sender.tag) == PieArray[count]{
                 count += 1
+                nomiss += 1
                 self.passNumbers.append(String(sender.tag))
                 self.collectionView.reloadData()
                 sideLabel.text = "\(count)digit"
                 offset.y += cellHeight/8
                 if passNumbers.count%100 == 0{offset.y += 30 + cellHeight/8 * 4}
+                if nomiss == 8{
+                    nomiss = 0
+                    heal()
+                }
                 if count >= 1000{
                     timer?.invalidate()
                     sideLabel.text = "Complete!"
@@ -144,6 +150,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
                 }
                 setContentOffset()
             }else{
+                nomiss = 0
                 life -= 1
                 drawLife()
                 if life <= 0{
@@ -197,13 +204,24 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
                 self.playAd()
             }
         }
+    }
 
+    func heal(){
+        if life < 3{
+            life += 1
+            drawLife()
+        }
     }
 
     func drawLife(){
+// 左から123
         switch life {
-        case 1:life2.isHidden = true
-        case 2:life3.isHidden = true
+        case 1:life1.isHidden = true
+            life2.isHidden = true
+            life3.isHidden = false
+        case 2:life1.isHidden = true
+            life2.isHidden = false
+            life3.isHidden = false
         case 3:life1.isHidden = false
         life2.isHidden = false
         life3.isHidden = false
@@ -222,7 +240,8 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
         if rewardBasedVideo?.isReady ?? false{
             GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
         }else{
-            self.navigationController?.popViewController(animated: true)
+            let navigationVC = storyboard?.instantiateViewController(withIdentifier: "navigationController")
+            self.present(navigationVC!, animated: true, completion: nil)
         }
     }
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
