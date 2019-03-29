@@ -12,9 +12,6 @@ import GoogleMobileAds
 class ChallengeViewController:UIViewController,UICollectionViewDelegate,
 UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVideoAdDelegate{
 
-    var fontColor = #colorLiteral(red: 1, green: 0.7451832748, blue: 0.07623420159, alpha: 0.85)
-    var backgroundColor = #colorLiteral(red: 0.666592598, green: 0.6667093039, blue: 0.666585207, alpha: 1)
-    var colors = [color1,color2,color3,color4,color5,color6,color7,color8,color9,color10]
     let userDefaults = UserDefaults.standard
 
     var GameStatus = false
@@ -50,7 +47,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
         colorSet = userDefaults.dictionary(forKey: "KEY_colorSet") as! [String : Int]
         colorUse = userDefaults.bool(forKey: "KEY_colorUse")
         skipcount = userDefaults.integer(forKey: "KEY_skipcount")
-
+        PieArray.removeAll()
         for i in pie{
             PieArray.append(String(i))
         }
@@ -133,20 +130,29 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
 
     @IBAction func numberTapped(_ sender: UIButtonAnimated){
         if GameStatus{
-            if String(sender.tag) == PieArray[count + skipcount]{
+            if String(sender.tag) == PieArray[count]{
                 count += 1
                 self.passNumbers.append(String(sender.tag))
                 self.collectionView.reloadData()
-                sideLabel.text = "\(passNumbers.count)digit"
+                sideLabel.text = "\(count)digit"
                 offset.y += cellHeight/8
                 if passNumbers.count%100 == 0{offset.y += 30 + cellHeight/8 * 4}
+                if count >= 1000{
+                    timer?.invalidate()
+                    sideLabel.text = "Complete!"
+                    GameStatus = false
+                }
                 setContentOffset()
             }else{
                 life -= 1
                 drawLife()
                 if life <= 0{
                     GameStatus = false
-                    sideLabel.text = "end at \(passNumbers.count)digit"
+                    sideLabel.text = "end at \(count)digit"
+                    let highScore = uds.integer(forKey: KEY.highScore.rawValue)
+                    if count > highScore{
+                        uds.set(count, forKey: KEY.highScore.rawValue)
+                    }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                         self.playAd()
                     }
@@ -176,19 +182,20 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
         timeLabel.text = "\(formatMin):\(formatSec)"
 
 
+        if timeCount < 580 * 10{
+            timeLabel.textColor = .red
+        }
         if timeCount == 0{
             timer!.invalidate()
             sideLabel.text = "time Up"
             GameStatus = false
+            let highScore = uds.integer(forKey: "KEY_highScore")
+            if count > highScore{
+                uds.set(count, forKey: "KEY_highScore")
+            }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
                 self.playAd()
             }
-        }
-
-        if count == 1000{
-            timer?.invalidate()
-            sideLabel.text = "Complete!"
-            GameStatus = false
         }
 
     }
@@ -215,7 +222,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
         if rewardBasedVideo?.isReady ?? false{
             GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
         }else{
-            print("まだ準備中")
+            self.navigationController?.popViewController(animated: true)
         }
     }
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
@@ -237,7 +244,10 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
 
     func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
         print("Reward based video ad is closed.")
-        self.navigationController?.popViewController(animated: true)
+        let navigationVC = storyboard?.instantiateViewController(withIdentifier: "navigationController")
+        self.present(navigationVC!, animated: true, completion: nil)
+
+//        self.navigationController?.popToRootViewController(animated: true)
     }
 
     func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {

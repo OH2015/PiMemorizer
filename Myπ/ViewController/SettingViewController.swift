@@ -17,8 +17,6 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
     @IBOutlet weak var colorCollectionView: UICollectionView!
     @IBOutlet weak var numberCollectionView: UICollectionView!
 
-    var colors = [color1,color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14 ]
-
     let checkingColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
     let backGroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     var selectingNumber:Int?
@@ -141,9 +139,6 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
         super.touchesEnded(touches, with: event)
         for touch:UITouch in touches{
             let tag = touch.view!.tag
-            if tag == 1{
-                dismiss(animated: true, completion: nil)
-            }
             if tag == 2{
                 selectingNumber = 10
                 selectingColor = 10
@@ -151,6 +146,10 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
                 colorCollectionView.reloadData()
             }
         }
+    }
+
+    @IBAction func close(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 
 }

@@ -26,6 +26,7 @@ let color11 = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.59215
 let color12 = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
 let color13 = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 let color14 = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+let colors = [color1,color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14]
 var colorSet = [String:Int]()
 var colorUse = true
 var skipcount = 0
@@ -35,4 +36,12 @@ let blueLife = UIImage(named: "blueLife")
 
 var cellHeight:CGFloat = 0
 var cellWidth:CGFloat = 0
+
+let uds = UserDefaults.standard
+
+enum KEY:String {
+    case colorUse = "KEY_colorUse"
+    case colorSet = "KEY_colorSet"
+    case highScore = "KEY_highScore"
+}
 

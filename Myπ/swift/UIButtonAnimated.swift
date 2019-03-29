@@ -34,11 +34,31 @@ class UIButtonAnimated: UIButton {
         self.addSubview(selectView)
     }
 
+
     override func layoutSubviews() {
         super.layoutSubviews()
 
         selectView.frame = self.bounds
     }
+
+    @IBInspectable var cornerRadius: CGFloat = 0 {
+        didSet {
+            layer.cornerRadius = cornerRadius
+        }
+    }
+
+    @IBInspectable var borderWidth: CGFloat = 0 {
+        didSet {
+            layer.borderWidth = borderWidth
+        }
+    }
+
+    @IBInspectable var borderColor: UIColor = UIColor.clear {
+        didSet {
+            layer.borderColor = borderColor.cgColor
+        }
+    }
+
 
     func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         super.touchesBegan(touches as! Set<UITouch>, with: event)

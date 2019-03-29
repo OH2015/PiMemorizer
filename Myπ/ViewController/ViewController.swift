@@ -13,12 +13,11 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
 
     var fontColor = #colorLiteral(red: 1, green: 0.7451832748, blue: 0.07623420159, alpha: 0.85)
     var backgroundColor = #colorLiteral(red: 0.666592598, green: 0.6667093039, blue: 0.666585207, alpha: 1)
-    var colors = [color1,color2,color3,color4,color5,color6,color7,color8,color9,color10]
+    
     let userDefaults = UserDefaults.standard
 
     var GameStatus = false
     var count = 0
-    var life = 3
     var passNumbers = [String]()
     var offset:CGPoint!
 
@@ -41,11 +40,10 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
         doubleTapGesture.numberOfTapsRequired = 2
         collectionView.addGestureRecognizer(doubleTapGesture)
-        life = 10000
         colorSet = userDefaults.dictionary(forKey: "KEY_colorSet") as! [String : Int]
         colorUse = userDefaults.bool(forKey: "KEY_colorUse")
         skipcount = userDefaults.integer(forKey: "KEY_skipcount")
-
+        PieArray.removeAll()
         for i in pie{
             PieArray.append(String(i))
         }
@@ -60,7 +58,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
 
     override func viewDidLayoutSubviews() {
-//        setContentOffset()
+        setContentOffset()
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -85,11 +83,12 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         }else{
             numbersInSection += passNumbers[indexPath.section*100...passNumbers.count - 1]
         }
-        label.text = numbersInSection[indexPath.row]
+        let number = numbersInSection[indexPath.row]
+        label.text = number
 
         if colorUse{
-            if let colorSet = colorSet[numbersInSection[indexPath.row]]{
-                label.textColor = colors[colorSet]
+            if let colorIndex = colorSet[number]{
+                label.textColor = colors[colorIndex]
             }
             if indexPath.section == 0 && indexPath.row == 0{
                 label.textColor = colors[colorSet["3"]!]
@@ -115,37 +114,27 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
 
     @IBAction func numberTapped(_ sender: UIButtonAnimated){
         if GameStatus{
-            if String(sender.tag) == PieArray[count + skipcount]{
+            if String(sender.tag) == PieArray[count]{
                 count += 1
                 self.passNumbers.append(String(sender.tag))
                 self.collectionView.reloadData()
-                sideLabel.text = "\(passNumbers.count)digit"
                 offset.y += cellHeight/8
                 if passNumbers.count%100 == 0{offset.y += 30 + cellHeight/8 * 4}
                 setContentOffset()
-            }else{
-                life -= 1
-                if life <= 0{
-                    GameStatus = false
-                    count = 0
-                    let CVC =  storyboard?.instantiateViewController(withIdentifier: "ChallengeViewController") as! ChallengeViewController
-                    CVC.playAd()
-                    sideLabel.text = "\(passNumbers.count)桁で終了"
-                    passNumbers.removeAll()
-                    setNumber()
-                }
             }
         }else if sender.tag == Int(PieArray[skipcount]){
             GameStatus = true
             passNumbers.append(String(sender.tag))
-            sideLabel.text = "\(passNumbers.count)digit"
+            sideLabel.text = "\(count)digit"
             count += 1
             self.collectionView.reloadData()
         }
+        sideLabel.text = "\(count)digit"
 
     }
 
     func setNumber(){
+        count += skipcount
         passNumbers.removeAll()
         passNumbers.append("3.")
         if skipcount != 0{
@@ -155,7 +144,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         }
         let section = passNumbers.count/100
         offset = CGPoint(x: 0, y: cellHeight * CGFloat(((passNumbers.count + section * 4)/8) - 4) + CGFloat(section * 30))
-        sideLabel.text = "\(passNumbers.count)digit"
+        sideLabel.text = "\(count)digit"
     }
 
     @objc func doubleTap(_ gesture: UITapGestureRecognizer) {
