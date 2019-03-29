@@ -12,13 +12,14 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
     @IBOutlet weak var skipCountLabel: UILabel!
     @IBOutlet weak var skipCountStepper: UIStepper!
     @IBOutlet weak var colorSwitch: UISwitch!
-    @IBOutlet weak var defaultButton: UIButton!
 
     @IBOutlet weak var colorCollectionView: UICollectionView!
     @IBOutlet weak var numberCollectionView: UICollectionView!
 
     let checkingColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
     let backGroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+    let numBackgroundColor = #colorLiteral(red: 0.5153377135, green: 0.620017712, blue: 0.8072057424, alpha: 0.9358037243)
+    let numCheckingColor = #colorLiteral(red: 0.3731030401, green: 0.4495403372, blue: 0.585606496, alpha: 0.8944777397)
     var selectingNumber:Int?
     var selectingColor:Int?
     let userDefaults = UserDefaults.standard
@@ -29,10 +30,10 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
         colorUse = userDefaults.bool(forKey: "KEY_colorUse")
 
         colorSet = self.userDefaults.dictionary(forKey: "KEY_colorSet") as! [String : Int]
-
-        skipCountLabel.text = String(userDefaults.integer(forKey: "KEY_skipcount"))
-        skipCountStepper.value = userDefaults.double(forKey: "KEY_skipcount")
-        skipcount = userDefaults.integer(forKey: "KEY_skipcount")
+        let count = userDefaults.integer(forKey: "KEY_skipcount")
+        skipCountLabel.text = String(count)
+        skipCountStepper.value = Double(count)
+        skipcount = count
 
         if colorUse{
             colorSwitch.isOn = true
@@ -58,21 +59,35 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        if !colorUse{cell.isUserInteractionEnabled = false}else{cell.isUserInteractionEnabled = true}
         if collectionView == numberCollectionView{
+            let label = cell.viewWithTag(1) as! UILabel
+            label.text = String(indexPath.row)
+            if !colorUse{
+                cell.backgroundColor = numBackgroundColor
+                label.textColor = .black
+                return cell
+            }
             if indexPath.row == selectingNumber{
+                cell.backgroundColor = numCheckingColor
+            }else{
+                cell.backgroundColor = numBackgroundColor
+            }
+            label.textColor = colors[colorSet[String(indexPath.row)]!]
+            return cell
+        }else{
+            if !colorUse{
+                cell.backgroundColor = backGroundColor
+                return cell
+            }
+            let button = cell.viewWithTag(1) as! UIButtonAnimated
+            if indexPath.row == selectingColor{
                 cell.backgroundColor = checkingColor
             }else{
                 cell.backgroundColor = backGroundColor
             }
-            let label = cell.viewWithTag(1) as! UILabel
-            label.text = String(indexPath.row)
-            label.textColor = colors[colorSet[String(indexPath.row)]!]
-            return cell
-        }else{
-            if indexPath.row == selectingColor{
-                cell.backgroundColor = checkingColor
-            }
-            cell.backgroundColor = colors[indexPath.row]
+            button.backgroundColor = colors[indexPath.row]
+
             return cell
         }
     }
@@ -98,8 +113,6 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
             selectingColor = indexPath.row
             guard let selectingNumber = selectingNumber else{return}
             colorSet[String(selectingNumber)] = indexPath.row
-            userDefaults.set(colorSet, forKey: "KEY_colorSet")
-            defaultButton.setTitleColor(checkingColor, for: .normal)
         }
         numberCollectionView.reloadData()
         colorCollectionView.reloadData()
@@ -109,10 +122,10 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
 
     
     @IBAction func stepper(_ sender: UIStepper) {
-        skipCountLabel.text = String(Int(sender.value))
-        userDefaults.set(sender.value, forKey: "KEY_skipcount")
-        skipcount = userDefaults.integer(forKey: "KEY_skipcount")
+        let count = sender.value
+        skipCountLabel.text = String(Int(count))
 
+        skipcount = Int(count)
     }
 
 
@@ -122,16 +135,18 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
         }else{
             colorUse = false
         }
-        userDefaults.set(colorUse, forKey: "KEY_colorUse")
-    }
-
-    @IBAction func Default(_ sender: UIButton) {
-        userDefaults.removeObject(forKey: "KEY_colorSet")
-        colorSet = userDefaults.dictionary(forKey: "KEY_colorSet") as! [String : Int]
         numberCollectionView.reloadData()
         colorCollectionView.reloadData()
-        sender.setTitleColor(.black, for: .normal)
+    }
 
+    @IBAction func random(_ sender: UIButton) {
+        let indexs = [Int](0...13)
+        let shuffledIndexArray = indexs.shuffled()
+        for i in 0...9{
+            colorSet[String(i)] = shuffledIndexArray[i]
+        }
+        numberCollectionView.reloadData()
+        colorCollectionView.reloadData()
     }
 
 
@@ -140,8 +155,8 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
         for touch:UITouch in touches{
             let tag = touch.view!.tag
             if tag == 2{
-                selectingNumber = 10
-                selectingColor = 10
+                selectingNumber = -1
+                selectingColor = -1
                 numberCollectionView.reloadData()
                 colorCollectionView.reloadData()
             }
@@ -149,6 +164,9 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
     }
 
     @IBAction func close(_ sender: Any) {
+        userDefaults.set(skipcount, forKey: "KEY_skipcount")
+        userDefaults.set(colorUse, forKey: "KEY_colorUse")
+        userDefaults.set(colorSet, forKey: "KEY_colorSet")
         dismiss(animated: true, completion: nil)
     }
 

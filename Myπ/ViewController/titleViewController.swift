@@ -40,7 +40,7 @@ class titleViewController: UIViewController{
 
     func renewHighScore(){
         let highScore = uds.integer(forKey: KEY.highScore.rawValue)
-        highScoreLabel.text = String(highScore)
+        highScoreLabel.text = "\(highScore)digit"
     }
 
 }
