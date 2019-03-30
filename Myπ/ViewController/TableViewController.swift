@@ -12,13 +12,11 @@ class TableViewController: UIViewController ,UICollectionViewDelegate,UICollecti
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    let userDefaults = UserDefaults.standard
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        colorSet = userDefaults.dictionary(forKey: "KEY_colorSet") as! [String : Int]
-        colorUse = userDefaults.bool(forKey: "KEY_colorUse")
-        skipcount = userDefaults.integer(forKey: "KEY_skipcount")
+        colorSet = uds.dictionary(forKey: KEY.colorSet) as! [String : Int]
+        isDifferentColor = uds.bool(forKey: KEY.isDifferentColor)
+        skipcount = uds.integer(forKey: KEY.skipcount)
         PieArray = ["3."]
 
         for i in pie{
@@ -50,7 +48,7 @@ class TableViewController: UIViewController ,UICollectionViewDelegate,UICollecti
         let number = PieArray[index]
         label.text = number
 
-        if colorUse{
+        if isDifferentColor{
             if let colorIndex = colorSet[number]{
                 label.textColor = colors[colorIndex]
             }

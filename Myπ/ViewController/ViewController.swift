@@ -12,8 +12,6 @@ import AVFoundation
 
 class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,AVAudioPlayerDelegate{
 
-    let userDefaults = UserDefaults.standard
-
     var GameStatus = false
     var count = 0
     var passNumbers = [String]()
@@ -40,9 +38,10 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
         doubleTapGesture.numberOfTapsRequired = 2
         collectionView.addGestureRecognizer(doubleTapGesture)
-        colorSet = userDefaults.dictionary(forKey: "KEY_colorSet") as! [String : Int]
-        colorUse = userDefaults.bool(forKey: "KEY_colorUse")
-        skipcount = userDefaults.integer(forKey: "KEY_skipcount")
+        colorSet = uds.dictionary(forKey: KEY.colorSet) as! [String : Int]
+        isDifferentColor = uds.bool(forKey: KEY.isDifferentColor)
+        skipcount = uds.integer(forKey: KEY.skipcount)
+        sameColorIndex = uds.integer(forKey: KEY.sameColorIndex)
         PieArray.removeAll()
         for i in pie{
             PieArray.append(String(i))
@@ -99,13 +98,16 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         let number = numbersInSection[indexPath.row]
         label.text = number
 
-        if colorUse{
+        if isDifferentColor{
             if let colorIndex = colorSet[number]{
                 label.textColor = colors[colorIndex]
+                return cell
             }
             if indexPath.section == 0 && indexPath.row == 0{
                 label.textColor = colors[colorSet["3"]!]
             }
+        }else{
+            label.textColor = colors[sameColorIndex]
         }
 
         return cell

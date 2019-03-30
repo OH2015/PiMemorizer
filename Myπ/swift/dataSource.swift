@@ -28,7 +28,8 @@ let color13 = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 let color14 = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 let colors = [color1,color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14]
 var colorSet = [String:Int]()
-var colorUse = true
+var sameColorIndex = 0
+var isDifferentColor = true
 var skipcount = 0
 let redLife = UIImage(named: "redLife")
 let greenLife = UIImage(named: "greenLife")
@@ -39,9 +40,17 @@ var cellWidth:CGFloat = 0
 
 let uds = UserDefaults.standard
 
-enum KEY:String {
-    case colorUse = "KEY_colorUse"
-    case colorSet = "KEY_colorSet"
-    case highScore = "KEY_highScore"
-}
+//enum KEY:String {
+//    case isDifferentColor = "KEY_isDifferentColor"
+//    case colorSet = KEY.colorSet
+//    case highScore = "KEY_highScore"
+//    case sameColorIndex = "KEY_sameColorIndex"
+//}
 
+struct KEY {
+    static let skipcount = "KEY_skipcount"
+    static let isDifferentColor = "KEY_isDifferentColor"
+    static let colorSet = "KEY_colorSet"
+    static let highScore = "KEY_highScore"
+    static let sameColorIndex = "KEY_sameColorIndex"
+}

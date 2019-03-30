@@ -22,20 +22,20 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
     let numCheckingColor = #colorLiteral(red: 0.3731030401, green: 0.4495403372, blue: 0.585606496, alpha: 0.8944777397)
     var selectingNumber:Int?
     var selectingColor:Int?
-    let userDefaults = UserDefaults.standard
     let VC = ViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        colorUse = userDefaults.bool(forKey: "KEY_colorUse")
+        isDifferentColor = uds.bool(forKey: KEY.isDifferentColor)
+        sameColorIndex = uds.integer(forKey: KEY.sameColorIndex)
 
-        colorSet = self.userDefaults.dictionary(forKey: "KEY_colorSet") as! [String : Int]
-        let count = userDefaults.integer(forKey: "KEY_skipcount")
+        colorSet = uds.dictionary(forKey: KEY.colorSet) as! [String : Int]
+        let count = uds.integer(forKey: KEY.skipcount)
         skipCountLabel.text = String(count)
         skipCountStepper.value = Double(count)
         skipcount = count
 
-        if colorUse{
+        if isDifferentColor{
             colorSwitch.isOn = true
         }else{
             colorSwitch.isOn = false
@@ -54,18 +54,19 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
         }else{
             return 14
         }
-
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        if !colorUse{cell.isUserInteractionEnabled = false}else{cell.isUserInteractionEnabled = true}
         if collectionView == numberCollectionView{
             let label = cell.viewWithTag(1) as! UILabel
             label.text = String(indexPath.row)
-            if !colorUse{
+            if isDifferentColor{
+                cell.isUserInteractionEnabled = true
+            }else{
+                cell.isUserInteractionEnabled = false
                 cell.backgroundColor = numBackgroundColor
-                label.textColor = .black
+                label.textColor = colors[sameColorIndex]
                 return cell
             }
             if indexPath.row == selectingNumber{
@@ -78,10 +79,7 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
         }else{
             let button = cell.viewWithTag(1) as! UIButtonAnimated
             button.backgroundColor = colors[indexPath.row]
-            if !colorUse{
-                cell.backgroundColor = backGroundColor
-                return cell
-            }
+
             if indexPath.row == selectingColor{
                 cell.backgroundColor = checkingColor
             }else{
@@ -103,16 +101,24 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        if collectionView == numberCollectionView{
-            let label = cell.viewWithTag(1) as! UILabel
-            selectingNumber = indexPath.row
-            selectingColor = colorSet[String(indexPath.row)]
-            label.textColor = colors[colorSet[String(indexPath.row)]!]
+        if isDifferentColor{
+            if collectionView == numberCollectionView{
+                let label = cell.viewWithTag(1) as! UILabel
+                selectingNumber = indexPath.row
+                selectingColor = colorSet[String(indexPath.row)]
+                label.textColor = colors[colorSet[String(indexPath.row)]!]
+            }else{
+                selectingColor = indexPath.row
+                guard let selectingNumber = selectingNumber else{return}
+// 辞書だから存在しないキーが入っていてもエラーにならない
+                colorSet[String(selectingNumber)] = indexPath.row
+            }
         }else{
             selectingColor = indexPath.row
-            guard let selectingNumber = selectingNumber else{return}
-            colorSet[String(selectingNumber)] = indexPath.row
+            sameColorIndex = indexPath.row
+
         }
+
         numberCollectionView.reloadData()
         colorCollectionView.reloadData()
 
@@ -130,19 +136,27 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
 
     @IBAction func ColorButton(_ sender: UISwitch) {
         if sender.isOn{
-            colorUse = true
+            isDifferentColor = true
         }else{
-            colorUse = false
+            isDifferentColor = false
+            selectingNumber = -1
+            selectingColor = sameColorIndex
         }
         numberCollectionView.reloadData()
         colorCollectionView.reloadData()
     }
 
     @IBAction func random(_ sender: UIButton) {
-        let indexs = [Int](0...13)
-        let shuffledIndexArray = indexs.shuffled()
-        for i in 0...9{
-            colorSet[String(i)] = shuffledIndexArray[i]
+        if isDifferentColor{
+            let indexs = [Int](0...13)
+            let shuffledIndexArray = indexs.shuffled()
+            for i in 0...9{
+                colorSet[String(i)] = shuffledIndexArray[i]
+            }
+        }else{
+            let randex = Int.random(in: 0...colors.count-1)
+            sameColorIndex = randex
+            selectingColor = randex
         }
         numberCollectionView.reloadData()
         colorCollectionView.reloadData()
@@ -163,9 +177,10 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
     }
 
     @IBAction func close(_ sender: Any) {
-        userDefaults.set(skipcount, forKey: "KEY_skipcount")
-        userDefaults.set(colorUse, forKey: "KEY_colorUse")
-        userDefaults.set(colorSet, forKey: "KEY_colorSet")
+        uds.set(skipcount, forKey: KEY.skipcount)
+        uds.set(isDifferentColor, forKey: KEY.isDifferentColor)
+        uds.set(colorSet, forKey: KEY.colorSet)
+        uds.set(sameColorIndex,forKey: KEY.sameColorIndex)
         dismiss(animated: true, completion: nil)
     }
 

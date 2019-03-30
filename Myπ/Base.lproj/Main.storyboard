@@ -428,7 +428,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="oMD-HN-hTw"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -497,7 +497,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <button opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttf-SE-d0m" customClass="UIButtonAnimated" customModule="Myπ" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <rect key="frame" x="2" y="2" width="46" height="46"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                                             <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
                                                             <userDefinedRuntimeAttributes>
@@ -509,10 +509,10 @@
                                                     </subviews>
                                                 </view>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="ttf-SE-d0m" secondAttribute="trailing" id="DBt-L3-1Wd"/>
-                                                    <constraint firstAttribute="bottom" secondItem="ttf-SE-d0m" secondAttribute="bottom" id="JNl-0o-m0o"/>
-                                                    <constraint firstItem="ttf-SE-d0m" firstAttribute="top" secondItem="46Q-0d-S13" secondAttribute="top" id="caE-E9-bU9"/>
-                                                    <constraint firstItem="ttf-SE-d0m" firstAttribute="leading" secondItem="46Q-0d-S13" secondAttribute="leading" id="yAc-Re-oam"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ttf-SE-d0m" secondAttribute="trailing" constant="2" id="DBt-L3-1Wd"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ttf-SE-d0m" secondAttribute="bottom" constant="2" id="JNl-0o-m0o"/>
+                                                    <constraint firstItem="ttf-SE-d0m" firstAttribute="top" secondItem="46Q-0d-S13" secondAttribute="top" constant="2" id="caE-E9-bU9"/>
+                                                    <constraint firstItem="ttf-SE-d0m" firstAttribute="leading" secondItem="46Q-0d-S13" secondAttribute="leading" constant="2" id="yAc-Re-oam"/>
                                                 </constraints>
                                             </collectionViewCell>
                                         </cells>
@@ -529,6 +529,7 @@
                                             <constraint firstAttribute="height" constant="31" id="Wpg-8O-IVT"/>
                                             <constraint firstAttribute="width" constant="49" id="dNP-4W-8ya"/>
                                         </constraints>
+                                        <color key="onTintColor" red="0.80907783415804202" green="0.93723848719483493" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="ColorButton:" destination="Mgc-BR-Auw" eventType="valueChanged" id="lCD-sW-f6J"/>
                                         </connections>
@@ -547,14 +548,16 @@
                                             <action selector="close:" destination="Mgc-BR-Auw" eventType="touchUpInside" id="0l8-oG-AKo"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9l-y5-CPj">
-                                        <rect key="frame" x="172.5" y="632.5" width="69" height="106.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9l-y5-CPj">
+                                        <rect key="frame" x="169" y="666.5" width="76" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="1En-Mb-29n"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                        <size key="titleShadowOffset" width="1" height="1"/>
                                         <state key="normal" title="random">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         </state>
                                         <connections>
                                             <action selector="random:" destination="Mgc-BR-Auw" eventType="touchUpInside" id="Es5-Lh-NBB"/>

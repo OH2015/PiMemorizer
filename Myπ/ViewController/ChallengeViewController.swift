@@ -46,9 +46,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
         doubleTapGesture.numberOfTapsRequired = 2
         collectionView.addGestureRecognizer(doubleTapGesture)
-        colorSet = uds.dictionary(forKey: "KEY_colorSet") as! [String : Int]
-        colorUse = uds.bool(forKey: "KEY_colorUse")
-        skipcount = uds.integer(forKey: "KEY_skipcount")
+        sameColorIndex = uds.integer(forKey: KEY.sameColorIndex)
         PieArray.removeAll()
         for i in pie{
             PieArray.append(String(i))
@@ -62,10 +60,10 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
 
         setNumber()
 
-        colorUse = false
         skipcount = 0
         GameStatus = true
         life = 3
+
         sideLabel.text = "\(passNumbers.count)digit"
 
         rewardBasedVideo = GADRewardBasedVideoAd.sharedInstance()
@@ -122,15 +120,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
             numbersInSection += passNumbers[indexPath.section*100...passNumbers.count - 1]
         }
         label.text = numbersInSection[indexPath.row]
-
-        if colorUse{
-            if let colorSet = colorSet[numbersInSection[indexPath.row]]{
-                label.textColor = colors[colorSet]
-            }
-            if indexPath.section == 0 && indexPath.row == 0{
-                label.textColor = colors[colorSet["3"]!]
-            }
-        }
+        label.textColor = .black
 
         return cell
     }
@@ -181,9 +171,9 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
                 if life <= 0{
                     GameStatus = false
                     sideLabel.text = "end at \(count)digit"
-                    let highScore = uds.integer(forKey: KEY.highScore.rawValue)
+                    let highScore = uds.integer(forKey: KEY.highScore)
                     if count > highScore{
-                        uds.set(count, forKey: KEY.highScore.rawValue)
+                        uds.set(count, forKey: KEY.highScore)
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                         self.playAd()
@@ -306,13 +296,4 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
     @IBAction func tap(_ sender: UIButton) {
         playAd()
     }
-
-
-
-        
-
-
-
-
-
 }

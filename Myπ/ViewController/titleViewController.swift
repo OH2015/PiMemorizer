@@ -21,9 +21,9 @@ class titleViewController: UIViewController{
         for i in 0...9{
             colorSet[String(i)] = i
         }
-        uds.register(defaults: ["KEY_colorSet":colorSet,"KEY_colorUse":colorUse,"KEY_highScore":0])
+        uds.register(defaults: [KEY.colorSet:colorSet,KEY.isDifferentColor:isDifferentColor,KEY.highScore:0,KEY.sameColorIndex:0])
         
-        let highScore = uds.integer(forKey: KEY.highScore.rawValue)
+        let highScore = uds.integer(forKey: KEY.highScore)
         if highScore == 1000{
             highScoreLabel.text = "Completed"
         }else{
