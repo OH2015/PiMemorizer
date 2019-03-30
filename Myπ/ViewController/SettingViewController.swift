@@ -76,18 +76,17 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
             label.textColor = colors[colorSet[String(indexPath.row)]!]
             return cell
         }else{
+            let button = cell.viewWithTag(1) as! UIButtonAnimated
+            button.backgroundColor = colors[indexPath.row]
             if !colorUse{
                 cell.backgroundColor = backGroundColor
                 return cell
             }
-            let button = cell.viewWithTag(1) as! UIButtonAnimated
             if indexPath.row == selectingColor{
                 cell.backgroundColor = checkingColor
             }else{
                 cell.backgroundColor = backGroundColor
             }
-            button.backgroundColor = colors[indexPath.row]
-
             return cell
         }
     }

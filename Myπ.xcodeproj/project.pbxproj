@@ -12,6 +12,8 @@
 		9D2E38182219279900D85B3D /* titleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E38172219279900D85B3D /* titleViewController.swift */; };
 		9D3223E5224CCB870053E75D /* UIButtonAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3223E4224CCB870053E75D /* UIButtonAnimated.swift */; };
 		9D4D7BA0224CEAF300EAFEA3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D7B9F224CEAF300EAFEA3 /* TableViewController.swift */; };
+		9D590120224E353F0021A17A /* typewriter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D59011F224E353F0021A17A /* typewriter.mp3 */; };
+		9D590122224E382C0021A17A /* select04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D590121224E382B0021A17A /* select04.mp3 */; };
 		9D5EC63A224BA78700B0A00D /* Pods_Myπ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D5EC639224BA78700B0A00D /* Pods_Myπ.framework */; };
 		9D83853F221BBD9F00D9D472 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D83853E221BBD9F00D9D472 /* Images.xcassets */; };
 		9D838541221BBF8700D9D472 /* MyUINavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D838540221BBF8700D9D472 /* MyUINavigationViewController.swift */; };
@@ -56,6 +58,8 @@
 		9D2E38172219279900D85B3D /* titleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = titleViewController.swift; sourceTree = "<group>"; };
 		9D3223E4224CCB870053E75D /* UIButtonAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAnimated.swift; sourceTree = "<group>"; };
 		9D4D7B9F224CEAF300EAFEA3 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		9D59011F224E353F0021A17A /* typewriter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = typewriter.mp3; sourceTree = "<group>"; };
+		9D590121224E382B0021A17A /* select04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = select04.mp3; sourceTree = "<group>"; };
 		9D5EC637224BA5D900B0A00D /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5EC639224BA78700B0A00D /* Pods_Myπ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "Pods_Myπ.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D83853E221BBD9F00D9D472 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -145,6 +149,15 @@
 			path = swift;
 			sourceTree = "<group>";
 		};
+		9D59011E224E34A40021A17A /* mp3 */ = {
+			isa = PBXGroup;
+			children = (
+				9D59011F224E353F0021A17A /* typewriter.mp3 */,
+				9D590121224E382B0021A17A /* select04.mp3 */,
+			);
+			path = mp3;
+			sourceTree = "<group>";
+		};
 		9DFFC9FA220EC110004EA1DA = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +183,7 @@
 		9DFFCA05220EC110004EA1DA /* Myπ */ = {
 			isa = PBXGroup;
 			children = (
+				9D59011E224E34A40021A17A /* mp3 */,
 				9D5178CC224CDE5700E0089F /* swift */,
 				9D5178CB224CDE4700E0089F /* ViewController */,
 				9DFFCA0A220EC110004EA1DA /* Main.storyboard */,
@@ -320,9 +334,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D590122224E382C0021A17A /* select04.mp3 in Resources */,
 				9DFFCA11220EC112004EA1DA /* LaunchScreen.storyboard in Resources */,
 				9DF89655224B9DF9009D6BDE /* GoogleService-Info.plist in Resources */,
 				9D83853F221BBD9F00D9D472 /* Images.xcassets in Resources */,
+				9D590120224E353F0021A17A /* typewriter.mp3 in Resources */,
 				9DFFCA0C220EC110004EA1DA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

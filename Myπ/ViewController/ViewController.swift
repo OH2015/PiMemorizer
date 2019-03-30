@@ -8,18 +8,18 @@
 
 import UIKit
 import GoogleMobileAds
+import AVFoundation
 
-class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,AVAudioPlayerDelegate{
 
-    var fontColor = #colorLiteral(red: 1, green: 0.7451832748, blue: 0.07623420159, alpha: 0.85)
-    var backgroundColor = #colorLiteral(red: 0.666592598, green: 0.6667093039, blue: 0.666585207, alpha: 1)
-    
     let userDefaults = UserDefaults.standard
 
     var GameStatus = false
     var count = 0
     var passNumbers = [String]()
     var offset:CGPoint!
+
+    var audioPlayer:AVAudioPlayer!
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var sideLabel: UILabel!
@@ -55,6 +55,19 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         self.collectionView.dataSource = self
 
         setNumber()
+
+        let audioPath = Bundle.main.path(forResource: "typewriter", ofType:"mp3")!
+        let audioUrl = URL(fileURLWithPath: audioPath)
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: audioUrl)
+        }catch{
+            print("mp3読み込み失敗")
+        }
+
+        audioPlayer.delegate = self
+        audioPlayer.volume = 0.9
+        audioPlayer.prepareToPlay()
     }
 
     override func viewDidLayoutSubviews() {
@@ -114,6 +127,8 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
 
     @IBAction func numberTapped(_ sender: UIButtonAnimated){
         if GameStatus{
+            audioPlayer.currentTime = 0.1
+            audioPlayer.play()
             if String(sender.tag) == PieArray[count]{
                 count += 1
                 self.passNumbers.append(String(sender.tag))
@@ -123,6 +138,8 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 setContentOffset()
             }
         }else if sender.tag == Int(PieArray[skipcount]){
+            audioPlayer.currentTime = 0.1
+            audioPlayer.play()
             GameStatus = true
             passNumbers.append(String(sender.tag))
             sideLabel.text = "\(count)digit"

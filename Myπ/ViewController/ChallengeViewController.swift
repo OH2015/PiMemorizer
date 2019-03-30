@@ -8,11 +8,10 @@
 
 import UIKit
 import GoogleMobileAds
+import AVFoundation
 
 class ChallengeViewController:UIViewController,UICollectionViewDelegate,
-UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVideoAdDelegate{
-
-    let userDefaults = UserDefaults.standard
+UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVideoAdDelegate,AVAudioPlayerDelegate{
 
     var GameStatus = false
     var count = 0
@@ -33,6 +32,9 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
 
     var rewardBasedVideo: GADRewardBasedVideoAd?
 
+    var audioPlayer:AVAudioPlayer!
+    var audioPlayer2:AVAudioPlayer!
+
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var life1: UIImageView!
     @IBOutlet weak var life2: UIImageView!
@@ -44,10 +46,9 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
         doubleTapGesture.numberOfTapsRequired = 2
         collectionView.addGestureRecognizer(doubleTapGesture)
-        life = 10000
-        colorSet = userDefaults.dictionary(forKey: "KEY_colorSet") as! [String : Int]
-        colorUse = userDefaults.bool(forKey: "KEY_colorUse")
-        skipcount = userDefaults.integer(forKey: "KEY_skipcount")
+        colorSet = uds.dictionary(forKey: "KEY_colorSet") as! [String : Int]
+        colorUse = uds.bool(forKey: "KEY_colorUse")
+        skipcount = uds.integer(forKey: "KEY_skipcount")
         PieArray.removeAll()
         for i in pie{
             PieArray.append(String(i))
@@ -71,6 +72,25 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
         rewardBasedVideo?.delegate = self
 
         setupRewardBasedVideoAd()
+
+        let audioPath = Bundle.main.path(forResource: "typewriter", ofType:"mp3")!
+        let audioUrl = URL(fileURLWithPath: audioPath)
+        let audioPath2 = Bundle.main.path(forResource: "select04", ofType:"mp3")!
+        let audioUrl2 = URL(fileURLWithPath: audioPath2)
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: audioUrl)
+            audioPlayer2 = try AVAudioPlayer(contentsOf: audioUrl2)
+        }catch{
+            print("mp3読み込み失敗")
+        }
+
+        audioPlayer.delegate = self
+        audioPlayer.volume = 0.9
+        audioPlayer.prepareToPlay()
+        audioPlayer2.delegate = self
+        audioPlayer2.volume = 0.3
+        audioPlayer2.prepareToPlay()
 
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
     }
@@ -130,8 +150,11 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
 
 
     @IBAction func numberTapped(_ sender: UIButtonAnimated){
+
         if GameStatus{
             if String(sender.tag) == PieArray[count]{
+                audioPlayer.currentTime = 0.1
+                audioPlayer.play()
                 count += 1
                 nomiss += 1
                 self.passNumbers.append(String(sender.tag))
@@ -143,13 +166,15 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
                     nomiss = 0
                     heal()
                 }
-                if count >= 1000{
+                if count >= 999{
                     timer?.invalidate()
                     sideLabel.text = "Complete!"
                     GameStatus = false
                 }
                 setContentOffset()
             }else{
+                audioPlayer2.currentTime = 0
+                audioPlayer2.play()
                 nomiss = 0
                 life -= 1
                 drawLife()
@@ -189,10 +214,10 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
         timeLabel.text = "\(formatMin):\(formatSec)"
 
 
-        if timeCount < 580 * 10{
+        if timeCount < 60 * 10{
             timeLabel.textColor = .red
         }
-        if timeCount == 0{
+        if timeCount < 0{
             timer!.invalidate()
             sideLabel.text = "time Up"
             GameStatus = false
