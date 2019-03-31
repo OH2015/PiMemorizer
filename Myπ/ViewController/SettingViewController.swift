@@ -15,6 +15,10 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
 
     @IBOutlet weak var colorCollectionView: UICollectionView!
     @IBOutlet weak var numberCollectionView: UICollectionView!
+    @IBOutlet weak var randomButton: UIButton!
+    @IBOutlet weak var startDigitLabel: UILabel!
+    @IBOutlet weak var colorLabel: UILabel!
+
 
     let checkingColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
     let backGroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
@@ -34,6 +38,9 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
         skipCountLabel.text = String(count)
         skipCountStepper.value = Double(count)
         skipcount = count
+        randomButton.setTitle(NSLocalizedString("random", comment: ""), for: .normal)
+        startDigitLabel.text = NSLocalizedString("startdigit", comment: "")
+        colorLabel.text = NSLocalizedString("color", comment: "")
 
         if isDifferentColor{
             colorSwitch.isOn = true

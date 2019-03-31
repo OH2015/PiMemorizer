@@ -64,7 +64,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
         GameStatus = true
         life = 3
 
-        sideLabel.text = "\(passNumbers.count)digit"
+        sideLabel.text = "\(passNumbers.count)\(NSLocalizedString("digit", comment: ""))"
 
         rewardBasedVideo = GADRewardBasedVideoAd.sharedInstance()
         rewardBasedVideo?.delegate = self
@@ -149,7 +149,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
                 nomiss += 1
                 self.passNumbers.append(String(sender.tag))
                 self.collectionView.reloadData()
-                sideLabel.text = "\(count)digit"
+                sideLabel.text = "\(count)\(NSLocalizedString("digit", comment: ""))"
                 offset.y += cellHeight/8
                 if passNumbers.count%100 == 0{offset.y += 30 + cellHeight/8 * 4}
                 if nomiss == 8{
@@ -158,7 +158,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
                 }
                 if count >= 999{
                     timer?.invalidate()
-                    sideLabel.text = "Wonderful!"
+                    sideLabel.text = NSLocalizedString("wonderful", comment: "")
                     GameStatus = false
                 }
                 setContentOffset()
@@ -188,7 +188,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
         passNumbers.append("3.")
         let section = passNumbers.count/100
         offset = CGPoint(x: 0, y: cellHeight * CGFloat(((passNumbers.count + section * 4)/8) - 4) + CGFloat(section * 30))
-        sideLabel.text = "\(passNumbers.count)digit"
+        sideLabel.text = "\(passNumbers.count)\(NSLocalizedString("digit", comment: ""))"
     }
 
     @objc func doubleTap(_ gesture: UITapGestureRecognizer) {
@@ -209,7 +209,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
         }
         if timeCount < 0{
             timer!.invalidate()
-            sideLabel.text = "time Up"
+            sideLabel.text = NSLocalizedString("timeUp", comment: "")
             GameStatus = false
             let highScore = uds.integer(forKey: KEY.highScore)
             if count > highScore{
@@ -295,7 +295,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
 
     @IBAction func tap(_ sender: UIButton) {
         GameStatus = false
-        sideLabel.text = "end at \(count)digit"
+        sideLabel.text = "\(NSLocalizedString("endat", comment: ""))\(count)\(NSLocalizedString("deowari", comment: ""))"
         let highScore = uds.integer(forKey: KEY.highScore)
         if count > highScore{
             uds.set(count, forKey: KEY.highScore)

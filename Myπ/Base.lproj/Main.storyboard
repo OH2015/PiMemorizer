@@ -128,8 +128,13 @@
                     <navigationItem key="navigationItem" id="tQ5-ny-xBH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="challengeModeButton" destination="xuq-c9-cmW" id="1zS-7m-x3k"/>
+                        <outlet property="freeModeButton" destination="4C0-lL-Im4" id="4Hr-sf-iyY"/>
                         <outlet property="highScoreLabel" destination="Yay-GF-tjg" id="I1F-sv-f8J"/>
+                        <outlet property="highScoreTitleLabel" destination="u80-jq-g6y" id="bZ4-ee-3UR"/>
                         <outlet property="imageView" destination="zts-i7-Dd4" id="USE-pu-Ghd"/>
+                        <outlet property="settingButton" destination="AFi-hC-C4W" id="YIP-yq-tEX"/>
+                        <outlet property="tableButton" destination="weG-2Q-uGs" id="Tv8-6H-Dbx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Mz-Qq-oxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -552,7 +557,7 @@
                                             <constraint firstAttribute="width" constant="70" id="O4q-OP-sK6"/>
                                             <constraint firstAttribute="height" constant="30" id="n93-2T-SRE"/>
                                         </constraints>
-                                        <state key="normal" title="Close">
+                                        <state key="normal" title="close">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -618,10 +623,13 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="colorCollectionView" destination="BEX-Ub-Db5" id="Gd3-Um-bdN"/>
+                        <outlet property="colorLabel" destination="dAT-Rj-3Ms" id="jnK-en-pOG"/>
                         <outlet property="colorSwitch" destination="Qvi-tw-KxW" id="3hU-fz-Ho3"/>
                         <outlet property="numberCollectionView" destination="bLG-cM-f37" id="vtl-9r-3l1"/>
+                        <outlet property="randomButton" destination="K9l-y5-CPj" id="D4m-6G-ZHh"/>
                         <outlet property="skipCountLabel" destination="v0s-2L-XiX" id="gBB-LK-F0W"/>
                         <outlet property="skipCountStepper" destination="EiT-Md-QkR" id="PsZ-NU-HuP"/>
+                        <outlet property="startDigitLabel" destination="8Zy-pm-oaD" id="Kt4-hs-uWR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wID-Yq-lKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

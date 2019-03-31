@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  Myπ
+
+  Created by 123 on 2019/03/31.
+  Copyright © 2019 123. All rights reserved.
+*/
+
+"digit" = "digit";
+"highScore" = "High Score";
+"close" = "close";
+"freeMode" = "Free Mode";
+"challengeMode" = "Challenge Mode";
+"setting" = "Setting";
+"table" = "Table";
+"random" = "random";
+"startdigit" = "Start Digit";
+"color" = "Color";
+"timeUp" = "Time Up";
+"endat" = "End at ";
+"deowari" = "digit";
+"wonderful" = "Wonderful!";

@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  Myπ
+
+  Created by 123 on 2019/03/31.
+  Copyright © 2019 123. All rights reserved.
+*/
+
+"digit" = "桁";
+"highScore" = "最高記録";
+"close" = "閉じる";
+"freeMode" = "フリーモード";
+"challengeMode" = "チャレンジモード";
+"setting" = "設定";
+"table" = "一覧";
+"random" = "ランダム";
+"startdigit" = "最初の桁";
+"color" = "色";
+"timeUp" = "時間切れ";
+"endat" = "";
+"deowari" = "桁で終了";
+"wonderful" = "お見事!";
