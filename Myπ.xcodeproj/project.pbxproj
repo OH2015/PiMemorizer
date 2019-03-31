@@ -10,6 +10,7 @@
 		704E0CB40BDC94F4629009FE /* Pods_My_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5650849CA7F5499E1B93F5AC /* Pods_My_Tests.framework */; };
 		7E69FBE10BEFDEA86537BBD1 /* Pods_My_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E51B81D124110D2987D46C6 /* Pods_My_UITests.framework */; };
 		9D120ED82250BF8B007E1F47 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9D120EDA2250BF8B007E1F47 /* Localizable.strings */; };
+		9D120EDE2250D2BF007E1F47 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9D120EE02250D2BF007E1F47 /* InfoPlist.strings */; };
 		9D2E38182219279900D85B3D /* titleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E38172219279900D85B3D /* titleViewController.swift */; };
 		9D3223E5224CCB870053E75D /* UIButtonAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3223E4224CCB870053E75D /* UIButtonAnimated.swift */; };
 		9D4D7BA0224CEAF300EAFEA3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D7B9F224CEAF300EAFEA3 /* TableViewController.swift */; };
@@ -58,6 +59,7 @@
 		94B9DD45BD24C96FF23611B5 /* Pods-Myπ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Myπ.release.xcconfig"; path = "Target Support Files/Pods-Myπ/Pods-Myπ.release.xcconfig"; sourceTree = "<group>"; };
 		9D120ED92250BF8B007E1F47 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9D120EDB2250BFF0007E1F47 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9D120EDF2250D2BF007E1F47 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9D2E38172219279900D85B3D /* titleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = titleViewController.swift; sourceTree = "<group>"; };
 		9D3223E4224CCB870053E75D /* UIButtonAnimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAnimated.swift; sourceTree = "<group>"; };
 		9D4D7B9F224CEAF300EAFEA3 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				9DFFCA0F220EC112004EA1DA /* LaunchScreen.storyboard */,
 				9D83853E221BBD9F00D9D472 /* Images.xcassets */,
 				9DFFCA12220EC112004EA1DA /* Info.plist */,
+				9D120EE02250D2BF007E1F47 /* InfoPlist.strings */,
 				9DF89654224B9DF9009D6BDE /* GoogleService-Info.plist */,
 			);
 			path = "Myπ";
@@ -340,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D590122224E382C0021A17A /* select04.mp3 in Resources */,
+				9D120EDE2250D2BF007E1F47 /* InfoPlist.strings in Resources */,
 				9DFFCA11220EC112004EA1DA /* LaunchScreen.storyboard in Resources */,
 				9DF89655224B9DF9009D6BDE /* GoogleService-Info.plist in Resources */,
 				9D120ED82250BF8B007E1F47 /* Localizable.strings in Resources */,
@@ -515,6 +519,14 @@
 				9D120EDB2250BFF0007E1F47 /* ja */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		9D120EE02250D2BF007E1F47 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9D120EDF2250D2BF007E1F47 /* ja */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		9DFFCA0A220EC110004EA1DA /* Main.storyboard */ = {
