@@ -441,7 +441,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="950" stepValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="EiT-Md-QkR">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="900" stepValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="EiT-Md-QkR">
                                         <rect key="frame" x="246" y="79" width="94" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="94" id="2kj-Kr-l6I"/>

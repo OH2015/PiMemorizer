@@ -25,7 +25,8 @@ class titleViewController: UIViewController{
         
         let highScore = uds.integer(forKey: KEY.highScore)
         if highScore == 1000{
-            highScoreLabel.text = "Completed"
+            highScoreLabel.textColor = .red
+            highScoreLabel.text = "999 Completed"
         }else{
             highScoreLabel.text = "\(highScore)digit"
         }

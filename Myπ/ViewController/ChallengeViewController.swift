@@ -120,7 +120,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
             numbersInSection += passNumbers[indexPath.section*100...passNumbers.count - 1]
         }
         label.text = numbersInSection[indexPath.row]
-        label.textColor = .black
+        label.textColor = .white
 
         return cell
     }
@@ -158,7 +158,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
                 }
                 if count >= 999{
                     timer?.invalidate()
-                    sideLabel.text = "Complete!"
+                    sideLabel.text = "Wonderful!"
                     GameStatus = false
                 }
                 setContentOffset()
@@ -211,9 +211,9 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
             timer!.invalidate()
             sideLabel.text = "time Up"
             GameStatus = false
-            let highScore = uds.integer(forKey: "KEY_highScore")
+            let highScore = uds.integer(forKey: KEY.highScore)
             if count > highScore{
-                uds.set(count, forKey: "KEY_highScore")
+                uds.set(count, forKey: KEY.highScore)
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
                 self.playAd()
@@ -294,6 +294,14 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
     }
 
     @IBAction func tap(_ sender: UIButton) {
-        playAd()
+        GameStatus = false
+        sideLabel.text = "end at \(count)digit"
+        let highScore = uds.integer(forKey: KEY.highScore)
+        if count > highScore{
+            uds.set(count, forKey: KEY.highScore)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.playAd()
+        }
     }
 }
