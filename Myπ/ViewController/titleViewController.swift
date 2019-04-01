@@ -46,7 +46,7 @@ class titleViewController: UIViewController{
         super.viewDidLayoutSubviews()
         var admobView = GADBannerView()
         admobView = GADBannerView(adSize:kGADAdSizeBanner)
-        admobView.delegate = nil
+//        admobView.delegate = nil
 
         let safeArea = self.view.safeAreaInsets.bottom
         admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - safeArea - admobView.frame.height)

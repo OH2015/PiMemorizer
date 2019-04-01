@@ -28,7 +28,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
     @IBOutlet weak var sideLabel: UILabel!
 
     let TEST_ID = "ca-app-pub-3940256099942544/1712485313"
-    var AdUnitID = "ca-app-pub-5237111055443143/7355281385"
+    let AdUnitID = "ca-app-pub-5237111055443143/7355281385"
 
     var rewardBasedVideo: GADRewardBasedVideoAd?
 
@@ -248,7 +248,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
     }
 
     func setupRewardBasedVideoAd(){
-        rewardBasedVideo?.load(GADRequest(),withAdUnitID: TEST_ID)
+        rewardBasedVideo?.load(GADRequest(),withAdUnitID: AdUnitID)
     }
 
     func playAd(){

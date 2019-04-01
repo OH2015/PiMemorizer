@@ -12,7 +12,6 @@ import AVFoundation
 
 class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,AVAudioPlayerDelegate{
 
-    var GameStatus = false
     var count = 0
     var passNumbers = [String]()
     var offset:CGPoint!
@@ -128,27 +127,18 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
 
     @IBAction func numberTapped(_ sender: UIButtonAnimated){
-        if GameStatus{
-            audioPlayer.currentTime = 0.1
-            audioPlayer.play()
-            if String(sender.tag) == PieArray[count]{
-                count += 1
-                self.passNumbers.append(String(sender.tag))
-                self.collectionView.reloadData()
-                offset.y += cellHeight/8
-                if passNumbers.count%100 == 0{offset.y += 30 + cellHeight/8 * 4}
-                setContentOffset()
-            }
-        }else if sender.tag == Int(PieArray[skipcount]){
-            audioPlayer.currentTime = 0.1
-            audioPlayer.play()
-            GameStatus = true
-            passNumbers.append(String(sender.tag))
-            sideLabel.text = "\(count)digit"
+        audioPlayer.currentTime = 0.1
+        audioPlayer.play()
+        if String(sender.tag) == PieArray[count]{
             count += 1
+            self.passNumbers.append(String(sender.tag))
             self.collectionView.reloadData()
+            offset.y += cellHeight/8
+            if passNumbers.count%100 == 0{offset.y += 30 + cellHeight/8 * 4}
+            setContentOffset()
         }
-        sideLabel.text = "\(count)digit"
+
+        sideLabel.text = "\(count)\(NSLocalizedString("digit", comment: ""))"
 
     }
 
@@ -163,7 +153,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         }
         let section = passNumbers.count/100
         offset = CGPoint(x: 0, y: cellHeight * CGFloat(((passNumbers.count + section * 4)/8) - 4) + CGFloat(section * 30))
-        sideLabel.text = "\(count)digit"
+        sideLabel.text = "\(count)\(NSLocalizedString("digit", comment: ""))"
     }
 
     @objc func doubleTap(_ gesture: UITapGestureRecognizer) {
