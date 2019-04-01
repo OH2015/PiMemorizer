@@ -15,6 +15,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     var count = 0
     var passNumbers = [String]()
     var offset:CGPoint!
+    var isCountMax = false
 
     var audioPlayer:AVAudioPlayer!
 
@@ -129,6 +130,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     @IBAction func numberTapped(_ sender: UIButtonAnimated){
         audioPlayer.currentTime = 0.1
         audioPlayer.play()
+        if isCountMax{return}
         if String(sender.tag) == PieArray[count]{
             count += 1
             self.passNumbers.append(String(sender.tag))
@@ -136,6 +138,9 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             offset.y += cellHeight/8
             if passNumbers.count%100 == 0{offset.y += 30 + cellHeight/8 * 4}
             setContentOffset()
+            if count >= 999{
+                isCountMax = true
+            }
         }
 
         sideLabel.text = "\(count)\(NSLocalizedString("digit", comment: ""))"
