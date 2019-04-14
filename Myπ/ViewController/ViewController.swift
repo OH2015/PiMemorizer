@@ -128,6 +128,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
 
     @IBAction func numberTapped(_ sender: UIButtonAnimated){
+        audioPlayer.stop()
         audioPlayer.currentTime = 0.1
         audioPlayer.play()
         if isCountMax{return}

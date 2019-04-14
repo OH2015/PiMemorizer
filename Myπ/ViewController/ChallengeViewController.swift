@@ -143,6 +143,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
 
         if GameStatus{
             if String(sender.tag) == PieArray[count]{
+                audioPlayer.stop()
                 audioPlayer.currentTime = 0.1
                 audioPlayer.play()
                 count += 1
