@@ -19,6 +19,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
     var nomiss = 0
     var passNumbers = [String]()
     var offset:CGPoint!
+    var ismute = false
 
     var timer:Timer?
     var timeCount = 600 * 10
@@ -32,8 +33,13 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
 
     var rewardBasedVideo: GADRewardBasedVideoAd?
 
-    var audioPlayer:AVAudioPlayer!
-    var audioPlayer2:AVAudioPlayer!
+    var audioPlayer = AVAudioPlayer()
+    var audioPlayer2 = AVAudioPlayer()
+    var musicPlayer = AVAudioPlayer()
+
+    let volume1:Float = 1.0
+    let volume2:Float = 0.3
+    let musicvol:Float = 0.6
 
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var life1: UIImageView!
@@ -71,24 +77,12 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
 
         setupRewardBasedVideoAd()
 
-        let audioPath = Bundle.main.path(forResource: "typewriter", ofType:"mp3")!
-        let audioUrl = URL(fileURLWithPath: audioPath)
-        let audioPath2 = Bundle.main.path(forResource: "select04", ofType:"mp3")!
-        let audioUrl2 = URL(fileURLWithPath: audioPath2)
+        setPlayer(player: &audioPlayer, contentof: "typewriter", volume: volume1)
+        setPlayer(player: &audioPlayer2, contentof: "select04", volume: volume2)
+        setPlayer(player: &musicPlayer, contentof: "music1", volume: musicvol)
 
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: audioUrl)
-            audioPlayer2 = try AVAudioPlayer(contentsOf: audioUrl2)
-        }catch{
-            print("mp3読み込み失敗")
-        }
-
-        audioPlayer.delegate = self
-        audioPlayer.volume = 0.9
-        audioPlayer.prepareToPlay()
-        audioPlayer2.delegate = self
-        audioPlayer2.volume = 0.3
-        audioPlayer2.prepareToPlay()
+        musicPlayer.numberOfLoops = -1
+        musicPlayer.play()
 
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
     }
@@ -140,7 +134,6 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
 
 
     @IBAction func numberTapped(_ sender: UIButtonAnimated){
-
         if GameStatus{
             if String(sender.tag) == PieArray[count]{
                 audioPlayer.stop()
@@ -171,7 +164,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
                 drawLife()
                 if life <= 0{
                     GameStatus = false
-                    sideLabel.text = "end at \(count)digit"
+                    sideLabel.text = "\(NSLocalizedString("endat", comment: ""))\(count)\(NSLocalizedString("deowari", comment: ""))"
                     let highScore = uds.integer(forKey: KEY.highScore)
                     if count > highScore{
                         uds.set(count, forKey: KEY.highScore)
@@ -253,6 +246,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
     }
 
     func playAd(){
+        musicPlayer.stop()
         if rewardBasedVideo?.isReady ?? false{
             GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
         }else{
@@ -280,7 +274,9 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
     func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
         print("Reward based video ad is closed.")
         let navigationVC = storyboard?.instantiateViewController(withIdentifier: "navigationController")
+        self.dismiss(animated: true, completion: nil)
         self.present(navigationVC!, animated: true, completion: nil)
+
 
 //        self.navigationController?.popToRootViewController(animated: true)
     }
@@ -304,5 +300,32 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.playAd()
         }
+    }
+
+    @IBAction func mute(_ sender: UIButton) {
+        let onimg = UIImage(named: "musicOn")
+        let offimg = UIImage(named: "musicOff")
+        if ismute{
+            ismute = false
+            sender.setImage(onimg, for: .normal)
+            musicPlayer.volume = musicvol
+        }else{
+            ismute = true
+            sender.setImage(offimg, for: .normal)
+            musicPlayer.volume = 0
+        }
+    }
+
+    func setPlayer( player:inout AVAudioPlayer,contentof name:String,volume:Float){
+        let audioPath = Bundle.main.path(forResource: name, ofType:"mp3")!
+        let audioUrl = URL(fileURLWithPath: audioPath)
+        do {
+            player = try AVAudioPlayer(contentsOf: audioUrl)
+        }catch{
+            print("mp3読み込み失敗")
+        }
+        player.volume = volume
+        player.delegate = self
+        player.prepareToPlay()
     }
 }

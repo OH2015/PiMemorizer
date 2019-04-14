@@ -30,6 +30,8 @@ class titleViewController: UIViewController{
 
         freeModeButton.setTitle(NSLocalizedString("freeMode", comment: ""), for: .normal)
         challengeModeButton.setTitle(NSLocalizedString("challengeMode", comment: ""), for: .normal)
+        freeModeButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        challengeModeButton.titleLabel?.adjustsFontSizeToFitWidth = true
         highScoreTitleLabel.text = NSLocalizedString("highScore", comment: "")
         tableButton.setTitle(NSLocalizedString("table", comment: ""), for: .normal)
         settingButton.setTitle(NSLocalizedString("setting", comment: ""), for: .normal)
