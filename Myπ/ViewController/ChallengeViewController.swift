@@ -59,7 +59,6 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
         doubleTapGesture.numberOfTapsRequired = 2
         collectionView.addGestureRecognizer(doubleTapGesture)
-        sameColorIndex = uds.integer(forKey: KEY.sameColorIndex)
         isSoundMute = uds.bool(forKey: KEY.isSoundMute)
         isreviewd = uds.bool(forKey: KEY.isreviewd)
 
@@ -97,6 +96,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
 
         musicPlayer.numberOfLoops = -1
         musicPlayer.play()
+
 
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
     }
