@@ -38,10 +38,13 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
         doubleTapGesture.numberOfTapsRequired = 2
         collectionView.addGestureRecognizer(doubleTapGesture)
+
         colorSet = uds.dictionary(forKey: KEY.colorSet) as! [String : Int]
         isDifferentColor = uds.bool(forKey: KEY.isDifferentColor)
+        isSoundMute = uds.bool(forKey: KEY.isSoundMute)
         skipcount = uds.integer(forKey: KEY.skipcount)
         sameColorIndex = uds.integer(forKey: KEY.sameColorIndex)
+
         PieArray.removeAll()
         for i in pie{
             PieArray.append(String(i))
@@ -65,7 +68,11 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         }
 
         audioPlayer.delegate = self
-        audioPlayer.volume = 0.9
+        if isSoundMute{
+            audioPlayer.volume = 0
+        }else{
+            audioPlayer.volume = 0.9
+        }
         audioPlayer.prepareToPlay()
     }
 
@@ -143,7 +150,6 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 isCountMax = true
             }
         }
-
         sideLabel.text = "\(count)\(NSLocalizedString("digit", comment: ""))"
 
     }

@@ -34,6 +34,8 @@ var skipcount = 0
 let redLife = UIImage(named: "redLife")
 let greenLife = UIImage(named: "greenLife")
 let blueLife = UIImage(named: "blueLife")
+var isSoundMute = false
+var isreviewd = false
 
 var cellHeight:CGFloat = 0
 var cellWidth:CGFloat = 0
@@ -53,4 +55,6 @@ struct KEY {
     static let colorSet = "KEY_colorSet"
     static let highScore = "KEY_highScore"
     static let sameColorIndex = "KEY_sameColorIndex"
+    static let isSoundMute = "KEY_isSoundMute"
+    static let isreviewd = "KEY_isreviewd"
 }

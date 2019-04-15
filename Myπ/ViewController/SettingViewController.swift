@@ -18,7 +18,7 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
     @IBOutlet weak var randomButton: UIButton!
     @IBOutlet weak var startDigitLabel: UILabel!
     @IBOutlet weak var colorLabel: UILabel!
-
+    @IBOutlet weak var soundButton: UIButton!
 
     let checkingColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
     let backGroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
@@ -28,10 +28,21 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
     var selectingColor:Int?
     let VC = ViewController()
 
+    let soundonimg = UIImage(named: "soundon")
+    let soundoffimg = UIImage(named: "soundoff")
+
     override func viewDidLoad() {
         super.viewDidLoad()
         isDifferentColor = uds.bool(forKey: KEY.isDifferentColor)
         sameColorIndex = uds.integer(forKey: KEY.sameColorIndex)
+        isSoundMute = uds.bool(forKey: KEY.isSoundMute)
+
+
+        if isSoundMute{
+            soundButton.setImage(soundoffimg, for: .normal)
+        }else{
+            soundButton.setImage(soundonimg, for: .normal)
+        }
 
         colorSet = uds.dictionary(forKey: KEY.colorSet) as! [String : Int]
         let count = uds.integer(forKey: KEY.skipcount)
@@ -169,7 +180,16 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
         colorCollectionView.reloadData()
     }
 
-
+    @IBAction func sound(_ sender: UIButton) {
+        if isSoundMute{
+            isSoundMute = false
+            soundButton.setImage(soundonimg, for: .normal)
+        }else{
+            isSoundMute = true
+            soundButton.setImage(soundoffimg, for: .normal)
+        }
+    }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         for touch:UITouch in touches{
@@ -188,6 +208,7 @@ class SettingViewController: UIViewController,UICollectionViewDelegate,UICollect
         uds.set(isDifferentColor, forKey: KEY.isDifferentColor)
         uds.set(colorSet, forKey: KEY.colorSet)
         uds.set(sameColorIndex,forKey: KEY.sameColorIndex)
+        uds.set(isSoundMute, forKey: KEY.isSoundMute)
         dismiss(animated: true, completion: nil)
     }
 

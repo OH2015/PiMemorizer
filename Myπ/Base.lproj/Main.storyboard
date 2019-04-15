@@ -26,7 +26,7 @@
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4C0-lL-Im4" customClass="UIButtonAnimated" customModule="Myπ" customModuleProvider="target">
-                                <rect key="frame" x="59" y="342" width="297" height="48"/>
+                                <rect key="frame" x="59" y="342" width="297" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.42459457639999998" blue="0.2125385618" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="28"/>
@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFi-hC-C4W">
-                                <rect key="frame" x="276" y="698" width="80" height="39"/>
+                                <rect key="frame" x="276" y="712" width="80" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
@@ -63,7 +63,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuq-c9-cmW" customClass="UIButtonAnimated" customModule="Myπ" customModuleProvider="target">
-                                <rect key="frame" x="56" y="459" width="300" height="55"/>
+                                <rect key="frame" x="56" y="447" width="300" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="28"/>
@@ -85,11 +85,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="0L4-08-6Wn" kind="showDetail" id="o0C-10-UTe"/>
+                                    <segue destination="0L4-08-6Wn" kind="show" id="o0C-10-UTe"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weG-2Q-uGs">
-                                <rect key="frame" x="69" y="696" width="72" height="41"/>
+                                <rect key="frame" x="56" y="709" width="72" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
@@ -102,16 +102,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="High Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u80-jq-g6y">
-                                <rect key="frame" x="142" y="552" width="130" height="31"/>
+                                <rect key="frame" x="134" y="552" width="145" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0digit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yay-GF-tjg">
-                                <rect key="frame" x="127" y="619" width="160" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -119,6 +112,13 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="288"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0digit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yay-GF-tjg">
+                                <rect key="frame" x="121" y="636" width="170" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -401,7 +401,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1157.9710144927537" y="-428.57142857142856"/>
+            <point key="canvasLocation" x="1101" y="-609"/>
         </scene>
         <!--MyUI Navigation View Controller-->
         <scene sceneID="0dz-wT-lhF">
@@ -419,7 +419,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LRJ-pR-LRq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1801" y="66"/>
+            <point key="canvasLocation" x="-555" y="183"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="zIW-Tm-0Kr">
@@ -583,10 +583,15 @@
                                             <action selector="random:" destination="Mgc-BR-Auw" eventType="touchUpInside" id="Es5-Lh-NBB"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOe-vR-5Jb">
-                                        <rect key="frame" x="28" y="678" width="84" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOe-vR-5Jb">
+                                        <rect key="frame" x="30" y="627.5" width="50" height="131.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="Swh-7A-PD3"/>
+                                        </constraints>
+                                        <state key="normal" image="soundon"/>
+                                        <connections>
+                                            <action selector="sound:" destination="Mgc-BR-Auw" eventType="touchUpInside" id="yPY-Uv-dZ6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -600,8 +605,11 @@
                                     <constraint firstAttribute="trailing" secondItem="A1S-cg-JaI" secondAttribute="trailing" id="B7H-qH-ewi"/>
                                     <constraint firstItem="v0s-2L-XiX" firstAttribute="centerY" secondItem="8Zy-pm-oaD" secondAttribute="centerY" id="C1j-lg-js4"/>
                                     <constraint firstItem="K9l-y5-CPj" firstAttribute="centerX" secondItem="p4h-Cq-Guy" secondAttribute="centerX" id="FGz-mx-fOH"/>
+                                    <constraint firstItem="oOe-vR-5Jb" firstAttribute="leading" secondItem="p4h-Cq-Guy" secondAttribute="leading" constant="30" id="JgZ-yG-CDi"/>
                                     <constraint firstItem="v0s-2L-XiX" firstAttribute="leading" secondItem="8Zy-pm-oaD" secondAttribute="trailing" constant="10" id="KiN-2p-FTF"/>
                                     <constraint firstAttribute="trailing" secondItem="v0s-2L-XiX" secondAttribute="trailing" constant="30" id="Mmt-lM-ntf"/>
+                                    <constraint firstItem="oOe-vR-5Jb" firstAttribute="top" secondItem="BEX-Ub-Db5" secondAttribute="bottom" constant="10" id="UIp-ya-QEQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="oOe-vR-5Jb" secondAttribute="bottom" constant="10" id="V1S-Kt-JvD"/>
                                     <constraint firstItem="EiT-Md-QkR" firstAttribute="centerX" secondItem="v0s-2L-XiX" secondAttribute="centerX" id="VCP-EG-i4m"/>
                                     <constraint firstItem="A1S-cg-JaI" firstAttribute="top" secondItem="p4h-Cq-Guy" secondAttribute="top" id="bJH-2N-APm"/>
                                     <constraint firstAttribute="trailing" secondItem="bLG-cM-f37" secondAttribute="trailing" id="dxq-AJ-YKW"/>
@@ -638,12 +646,13 @@
                         <outlet property="randomButton" destination="K9l-y5-CPj" id="D4m-6G-ZHh"/>
                         <outlet property="skipCountLabel" destination="v0s-2L-XiX" id="gBB-LK-F0W"/>
                         <outlet property="skipCountStepper" destination="EiT-Md-QkR" id="PsZ-NU-HuP"/>
+                        <outlet property="soundButton" destination="oOe-vR-5Jb" id="zyS-Pc-9Ix"/>
                         <outlet property="startDigitLabel" destination="8Zy-pm-oaD" id="Kt4-hs-uWR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wID-Yq-lKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-517.39130434782612" y="-407.14285714285711"/>
+            <point key="canvasLocation" x="1058" y="741"/>
         </scene>
         <!--Challenge View Controller-->
         <scene sceneID="HFh-g4-Vib">
@@ -654,9 +663,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDM-rB-h6R" customClass="UIButtonAnimated" customModule="Myπ">
-                                <rect key="frame" x="10" y="755" width="394" height="87"/>
+                                <rect key="frame" x="10" y="718.5" width="394" height="74.5"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="33"/>
                                 <state key="normal" title="0">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -677,9 +686,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SmX-IP-AmB" customClass="UIButtonAnimated" customModule="Myπ" customModuleProvider="target">
-                                <rect key="frame" x="10" y="668" width="131.5" height="87"/>
+                                <rect key="frame" x="10" y="643.5" width="131.5" height="75"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="33"/>
                                 <state key="normal" title="1">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -688,9 +697,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qil-8N-cGe" customClass="UIButtonAnimated" customModule="Myπ" customModuleProvider="target">
-                                <rect key="frame" x="141.5" y="668" width="131" height="87"/>
+                                <rect key="frame" x="141.5" y="643.5" width="131" height="75"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="33"/>
                                 <state key="normal" title="2">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -699,9 +708,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mkq-Nc-9Qj" customClass="UIButtonAnimated" customModule="Myπ" customModuleProvider="target">
-                                <rect key="frame" x="272.5" y="668" width="131.5" height="87"/>
+                                <rect key="frame" x="272.5" y="643.5" width="131.5" height="75"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="33"/>
                                 <state key="normal" title="3">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -710,9 +719,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sa-r8-rIP" customClass="UIButtonAnimated" customModule="Myπ" customModuleProvider="target">
-                                <rect key="frame" x="10" y="581.5" width="131.5" height="86.5"/>
+                                <rect key="frame" x="10" y="569" width="131.5" height="74.5"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="33"/>
                                 <state key="normal" title="4">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -721,9 +730,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xo-aQ-SdQ" customClass="UIButtonAnimated" customModule="Myπ" customModuleProvider="target">
-                                <rect key="frame" x="141.5" y="581.5" width="131" height="86.5"/>
+                                <rect key="frame" x="141.5" y="569" width="131" height="74.5"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="33"/>
                                 <state key="normal" title="5">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -732,9 +741,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qME-Rx-gcT" customClass="UIButtonAnimated" customModule="Myπ" customModuleProvider="target">
-                                <rect key="frame" x="272.5" y="581.5" width="131.5" height="86.5"/>
+                                <rect key="frame" x="272.5" y="569" width="131.5" height="74.5"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="33"/>
                                 <state key="normal" title="6">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -743,9 +752,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDa-CC-XLT" customClass="UIButtonAnimated" customModule="Myπ" customModuleProvider="target">
-                                <rect key="frame" x="10" y="494.5" width="131.5" height="87"/>
+                                <rect key="frame" x="10" y="494.5" width="131.5" height="74.5"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="33"/>
                                 <state key="normal" title="7">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -755,9 +764,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uw1-xf-DcS" customClass="UIButtonAnimated" customModule="Myπ" customModuleProvider="target">
-                                <rect key="frame" x="141.5" y="494.5" width="131" height="87"/>
+                                <rect key="frame" x="141.5" y="494.5" width="131" height="74.5"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="33"/>
                                 <state key="normal" title="8">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -766,9 +775,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhg-In-73R" customClass="UIButtonAnimated" customModule="Myπ" customModuleProvider="target">
-                                <rect key="frame" x="272.5" y="494.5" width="131.5" height="87"/>
+                                <rect key="frame" x="272.5" y="494.5" width="131.5" height="74.5"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="33"/>
                                 <state key="normal" title="9">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -852,7 +861,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydt-Cx-Ur3" customClass="UIButtonAnimated" customModule="Myπ" customModuleProvider="target">
-                                <rect key="frame" x="20" y="64" width="60" height="64"/>
+                                <rect key="frame" x="20" y="108" width="60" height="20"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="fi5-eW-Rqx"/>
@@ -962,12 +971,14 @@
                         <outlet property="life2" destination="IPo-Wl-ZfM" id="JDT-FQ-zre"/>
                         <outlet property="life3" destination="Csl-Om-yRs" id="yq9-aj-bFw"/>
                         <outlet property="sideLabel" destination="DPU-MA-kLS" id="GcK-2o-qC0"/>
+                        <outlet property="soundButton" destination="Hh3-En-eEN" id="rYZ-O4-mIP"/>
                         <outlet property="timeLabel" destination="aaB-dw-Jfq" id="Upu-Yz-hOl"/>
+                        <segue destination="y68-xG-IJB" kind="showDetail" identifier="backSegue" id="c6f-GU-T8Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ill-pF-iEg" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968" y="274"/>
+            <point key="canvasLocation" x="-555" y="-609"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="03H-wb-TLt">
@@ -1051,7 +1062,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fbh-jD-cJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="461" y="869"/>
+            <point key="canvasLocation" x="219" y="770"/>
         </scene>
     </scenes>
     <resources>
@@ -1059,6 +1070,7 @@
         <image name="Pi" width="1024" height="1024"/>
         <image name="greenLife" width="445" height="455"/>
         <image name="musicOn" width="30" height="30"/>
+        <image name="soundon" width="50" height="50"/>
     </resources>
     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMobileAds
 import AVFoundation
+import StoreKit
 
 class ChallengeViewController:UIViewController,UICollectionViewDelegate,
 UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVideoAdDelegate,AVAudioPlayerDelegate{
@@ -30,6 +31,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
 
     let TEST_ID = "ca-app-pub-3940256099942544/1712485313"
     let AdUnitID = "ca-app-pub-5237111055443143/7355281385"
+    let AppID = "1458275259"
 
     var rewardBasedVideo: GADRewardBasedVideoAd?
 
@@ -41,18 +43,30 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
     let volume2:Float = 0.3
     let musicvol:Float = 0.6
 
+    let onimg = UIImage(named: "musicOn")
+    let offimg = UIImage(named: "musicOff")
+
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var life1: UIImageView!
     @IBOutlet weak var life2: UIImageView!
     @IBOutlet weak var life3: UIImageView!
+    @IBOutlet weak var soundButton: UIButton!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
         doubleTapGesture.numberOfTapsRequired = 2
         collectionView.addGestureRecognizer(doubleTapGesture)
         sameColorIndex = uds.integer(forKey: KEY.sameColorIndex)
+        isSoundMute = uds.bool(forKey: KEY.isSoundMute)
+        isreviewd = uds.bool(forKey: KEY.isreviewd)
+
+        if isSoundMute{
+            soundButton.setImage(offimg, for: .normal)
+        }
+
         PieArray.removeAll()
         for i in pie{
             PieArray.append(String(i))
@@ -154,6 +168,9 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
                     timer?.invalidate()
                     sideLabel.text = NSLocalizedString("wonderful", comment: "")
                     GameStatus = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+                        self.playAd()
+                    }
                 }
                 setContentOffset()
             }else{
@@ -168,6 +185,12 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
                     let highScore = uds.integer(forKey: KEY.highScore)
                     if count > highScore{
                         uds.set(count, forKey: KEY.highScore)
+                        if !isreviewd && count > 30{
+                            musicPlayer.stop()
+                            instructReview()
+                            uds.set(true, forKey: KEY.isreviewd)
+                            return
+                        }
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                         self.playAd()
@@ -250,8 +273,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
         if rewardBasedVideo?.isReady ?? false{
             GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
         }else{
-            let navigationVC = storyboard?.instantiateViewController(withIdentifier: "navigationController")
-            self.present(navigationVC!, animated: true, completion: nil)
+            backToTitle()
         }
     }
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
@@ -273,12 +295,8 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
 
     func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
         print("Reward based video ad is closed.")
-        let navigationVC = storyboard?.instantiateViewController(withIdentifier: "navigationController")
-        self.dismiss(animated: true, completion: nil)
-        self.present(navigationVC!, animated: true, completion: nil)
+        backToTitle()
 
-
-//        self.navigationController?.popToRootViewController(animated: true)
     }
 
     func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
@@ -303,8 +321,7 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
     }
 
     @IBAction func mute(_ sender: UIButton) {
-        let onimg = UIImage(named: "musicOn")
-        let offimg = UIImage(named: "musicOff")
+        if isSoundMute{return}
         if ismute{
             ismute = false
             sender.setImage(onimg, for: .normal)
@@ -324,8 +341,36 @@ UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADRewardBasedVide
         }catch{
             print("mp3読み込み失敗")
         }
-        player.volume = volume
+        if isSoundMute{
+            player.volume = 0
+        }else{
+            player.volume = volume
+        }
         player.delegate = self
         player.prepareToPlay()
     }
+
+    func instructReview(){
+        if #available(iOS 10.3, *){
+            SKStoreReviewController.requestReview()
+        }else{
+            let alert = UIAlertController(title: NSLocalizedString("request", comment: ""), message: NSLocalizedString("submessage", comment: ""), preferredStyle: .alert)
+            alert.addAction(
+                UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel){_ in
+                    self.backToTitle()
+            })
+            alert.addAction(UIAlertAction(title: NSLocalizedString("review", comment: ""), style: .default, handler: {_ in
+                guard let url = URL(string: "https://itunes.apple.com/app/id\(self.AppID)?action=write-review") else { return }
+                UIApplication.shared.open(url)
+                self.dismiss(animated: true)
+            }))
+            self.present(alert,animated: true)
+        }
+    }
+
+    func backToTitle(){
+        performSegue(withIdentifier: "backSegue", sender: nil)
+    }
+
+
 }
